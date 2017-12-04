@@ -58,6 +58,27 @@ update msg model =
                 
         Login dadoslogin ->
             (model, Http.send RespostaLogin <| post "https://meangirls-raquelvilione.c9users.io/login/" (jsonBody (encodeDadosUsuario model.usuario.email model.usuario.senha)) decodeRespLogin)
+-- ---------------------------------------------------------
+-- PESQUISA
+-- ---------------------------------------------------------  
+        SymbolSearch digitado ->
+            ({ model | symbol = digitado }, Cmd.none)
+
+        SubmitSearch ->
+            (model, getStocks model.symbol)
+
+        RespostaSearch resp ->
+            case resp of
+                Err x -> ({ model | symbol = toString x}, Cmd.none)
+                Ok lista -> ({model | stocks = lista}, Cmd.none)
+        
+        CadastrarSerie stock ->
+            (model, Http.send ResCadastrarSerie <| post "https://meangirls-raquelvilione.c9users.io/serie/inserir" (jsonBody (encodeSerie stock)) int)
+            
+        ResCadastrarSerie resposta ->
+            case resposta of
+                Err x -> ({ model | symbol = toString x}, Cmd.none)
+                Ok lista -> ({model | symbol = toString lista}, Cmd.none)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
