@@ -94,6 +94,21 @@ update msg model =
             case resposta of
                 Err x -> ({ model | mensagem = toString x}, Cmd.none)
                 Ok lista -> (model, Cmd.none)
+-- ---------------------------------------------------------
+-- AIRING TODAY
+-- ---------------------------------------------------------
+        RespostaAiringToday resp ->
+            case resp of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok lista -> ({model | seriesairingtoday = lista, mensagem = "ok"}, carousel "")
+            
+        CadSerieAiringToday airingtodayy ->
+            (model, Http.send ResCadSerieAiringToday <| post "https://meangirls-raquelvilione.c9users.io/serie/inserir" (jsonBody (encodeAiringToday airingtodayy)) int)
+            
+        ResCadSerieAiringToday resposta ->
+            case resposta of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok lista -> (model, Cmd.none)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
