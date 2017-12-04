@@ -231,6 +231,32 @@ viewSerie model =
                 ]
     , div [id "temporadas", class "container"] (List.map viewTemporada model.temporadas)
     ]
+-- ---------------------------------------------------------
+-- AIRING TODAY
+-- ---------------------------------------------------------
+viewAiringToday : AiringToday -> Html Msg
+viewAiringToday airingtodayy =
+    div [class "item"] [ 
+        div [class "tutor-block project wow animated animated4 fadeInLeft"] [
+            div [class "tutor-img"] [
+                img [src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" airingtodayy.poster))] []
+                , div [class "project-hover"] [
+                    h1 [class "title-item-carousel"] [text <| tiraAspas <| toString airingtodayy.nome]
+                    , hr [] []
+                    , button [class "ver-mais", onClick (VerSerie airingtodayy)] [text "visualizar"]
+                ]
+            ]
+        ]
+    ]
+
+viewAiringToday2 : Model -> Html Msg
+viewAiringToday2 model =
+    div [class "espac"] [
+        div [class "container"][
+            h1 [class "title-tvbox"] [text "NO AR HOJE"]
+        ]
+        , div [id "owl-airingtoday", class "owl-carousel owl-theme"] (List.map viewAiringToday model.seriesairingtoday)
+    ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
