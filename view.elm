@@ -106,6 +106,23 @@ viewLogin model =
         , button [class "btn-padrao",  onClick (Login model.usuario)] [text "Login"]
         ]
    ]
+-- ---------------------------------------------------------
+-- STOCK
+-- ---------------------------------------------------------    
+viewStock : Stock -> Html Msg
+viewStock stock =
+        div [class "col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30"] [ 
+            div [class "tutor-block resultados"] [
+                div [class "tutor-img"] [
+                    img [src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" stock.poster))] []
+                ]
+                , div [class "tutor-content"] [
+                    h5 [class "tutor-title"] [text <| tiraAspas <| toString stock.nome]
+                    , div [] [a [href "#"] [button [class "btn-ver", onClick (VerSerie stock)] [text "Visualizar"]]]
+                    -- , div [] [button [onClick (CadastrarSerie stock)] [text "+"]]
+                ]
+            ]
+        ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
