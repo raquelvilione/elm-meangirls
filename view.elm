@@ -123,6 +123,27 @@ viewStock stock =
                 ]
             ]
         ]
+-- --------------------------------------------------------- 
+-- PESQUISA
+-- ---------------------------------------------------------    
+viewSearch : Model -> Html Msg
+viewSearch model =
+    div [class "container"] [
+        div []
+            [ form [class "form-search", onSubmit SubmitSearch]
+                [ 
+                    div [class "input-group"] [
+                        input [class "input-custom", type_ "text", required True, placeholder "Pesquisar", onInput SymbolSearch] []
+                        , span [class "input-group-btn"] [
+                            button [] [
+                                i [class "fa fa-search"] []
+                            ]
+                        ]
+                    ]
+                ]
+                    , div [] (List.map viewStock model.stocks)
+            ]
+    ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
