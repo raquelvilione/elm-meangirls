@@ -64,6 +64,23 @@ view model =
 viewIndex : Model -> Html Msg
 viewIndex model = 
     span [][]
+-- ---------------------------------------------------------
+-- CADASTRO USUÁRIO
+-- ---------------------------------------------------------
+viewCadastro : Model -> Html Msg
+viewCadastro model =
+  div [class "container align"] [
+     h1 [class "title-tvbox text-center"] [text "cadastro"]
+     , div [class "col-md-4 col-md-offset-4 col-xs-12"]
+        [ input [class "input-custom-register", type_ "text", required True, placeholder "Nome", onInput Nome ] []
+        , input [class "input-custom-register", type_ "text", required True, placeholder "Sobrenome", onInput Sobrenome] []
+        , input [class "input-custom-register", type_ "text", required True, placeholder "Email", onInput Email] []
+        , input [class "input-custom-register", type_ "password", required True, placeholder "Senha", onInput Senha ] []
+        , input [class "input-custom-register", type_ "password", required True, placeholder "Confirme sua senha", onInput ConfirmarSenha ] []
+        , button [class "btn-padrao",  onClick (CadastrarUsuario model.usuario)] [text "Cadastrar"]
+        , viewValidation model
+        ]
+  ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
