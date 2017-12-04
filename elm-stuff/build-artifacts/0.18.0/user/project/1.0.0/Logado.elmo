@@ -1,0 +1,62 @@
+var _user$project$Logado$check = _elm_lang$core$Native_Platform.outgoingPort(
+	'check',
+	function (v) {
+		return _elm_lang$core$Native_List.toArray(v).map(
+			function (v) {
+				return {
+					id_: v.id_,
+					nome: v.nome,
+					mediaNota: v.mediaNota,
+					poster: (v.poster.ctor === 'Nothing') ? null : v.poster._0,
+					dataInicio: v.dataInicio,
+					popularidade: v.popularidade
+				};
+			});
+	});
+var _user$project$Logado$suggestions = _elm_lang$core$Native_Platform.incomingPort(
+	'suggestions',
+	_elm_lang$core$Json_Decode$list(
+		A2(
+			_elm_lang$core$Json_Decode$andThen,
+			function (id_) {
+				return A2(
+					_elm_lang$core$Json_Decode$andThen,
+					function (nome) {
+						return A2(
+							_elm_lang$core$Json_Decode$andThen,
+							function (mediaNota) {
+								return A2(
+									_elm_lang$core$Json_Decode$andThen,
+									function (poster) {
+										return A2(
+											_elm_lang$core$Json_Decode$andThen,
+											function (dataInicio) {
+												return A2(
+													_elm_lang$core$Json_Decode$andThen,
+													function (popularidade) {
+														return _elm_lang$core$Json_Decode$succeed(
+															{id_: id_, nome: nome, mediaNota: mediaNota, poster: poster, dataInicio: dataInicio, popularidade: popularidade});
+													},
+													A2(_elm_lang$core$Json_Decode$field, 'popularidade', _elm_lang$core$Json_Decode$float));
+											},
+											A2(_elm_lang$core$Json_Decode$field, 'dataInicio', _elm_lang$core$Json_Decode$string));
+									},
+									A2(
+										_elm_lang$core$Json_Decode$field,
+										'poster',
+										_elm_lang$core$Json_Decode$oneOf(
+											{
+												ctor: '::',
+												_0: _elm_lang$core$Json_Decode$null(_elm_lang$core$Maybe$Nothing),
+												_1: {
+													ctor: '::',
+													_0: A2(_elm_lang$core$Json_Decode$map, _elm_lang$core$Maybe$Just, _elm_lang$core$Json_Decode$string),
+													_1: {ctor: '[]'}
+												}
+											})));
+							},
+							A2(_elm_lang$core$Json_Decode$field, 'mediaNota', _elm_lang$core$Json_Decode$float));
+					},
+					A2(_elm_lang$core$Json_Decode$field, 'nome', _elm_lang$core$Json_Decode$string));
+			},
+			A2(_elm_lang$core$Json_Decode$field, 'id_', _elm_lang$core$Json_Decode$int))));

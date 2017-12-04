@@ -1,0 +1,212 @@
+var _user$project$Encodes$encodeAiringToday = function (_p0) {
+	var _p1 = _p0;
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'idApi',
+				_1: _elm_lang$core$Json_Encode$int(_p1.id_)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'name',
+					_1: _elm_lang$core$Json_Encode$string(_p1.nome)
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'vote_average',
+						_1: _elm_lang$core$Json_Encode$float(_p1.mediaNota)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'poster_path',
+							_1: _elm_lang$core$Json_Encode$string(
+								A2(_elm_lang$core$Maybe$withDefault, '', _p1.poster))
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'first_air_date',
+								_1: _elm_lang$core$Json_Encode$string(_p1.dataInicio)
+							},
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '_Tuple2',
+									_0: 'popularity',
+									_1: _elm_lang$core$Json_Encode$float(_p1.popularidade)
+								},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Encodes$encodePopulares = function (_p2) {
+	var _p3 = _p2;
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'idApi',
+				_1: _elm_lang$core$Json_Encode$int(_p3.id_)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'name',
+					_1: _elm_lang$core$Json_Encode$string(_p3.nome)
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'vote_average',
+						_1: _elm_lang$core$Json_Encode$float(_p3.mediaNota)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'poster_path',
+							_1: _elm_lang$core$Json_Encode$string(
+								A2(_elm_lang$core$Maybe$withDefault, '', _p3.poster))
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'first_air_date',
+								_1: _elm_lang$core$Json_Encode$string(_p3.dataInicio)
+							},
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '_Tuple2',
+									_0: 'popularity',
+									_1: _elm_lang$core$Json_Encode$float(_p3.popularidade)
+								},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Encodes$encodeDadosUsuario = F2(
+	function (email, senha) {
+		return _elm_lang$core$Json_Encode$list(
+			{
+				ctor: '::',
+				_0: _elm_lang$core$Json_Encode$string(email),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$core$Json_Encode$string(senha),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _user$project$Encodes$encodeUsuario = function (_p4) {
+	var _p5 = _p4;
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'nome',
+				_1: _elm_lang$core$Json_Encode$string(_p5.nome)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'sobrenome',
+					_1: _elm_lang$core$Json_Encode$string(_p5.sobrenome)
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'email',
+						_1: _elm_lang$core$Json_Encode$string(_p5.email)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'senha',
+							_1: _elm_lang$core$Json_Encode$string(_p5.senha)
+						},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Encodes$encodeSerie = function (_p6) {
+	var _p7 = _p6;
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'idApi',
+				_1: _elm_lang$core$Json_Encode$int(_p7.id_)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'name',
+					_1: _elm_lang$core$Json_Encode$string(_p7.nome)
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'vote_average',
+						_1: _elm_lang$core$Json_Encode$float(_p7.mediaNota)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'poster_path',
+							_1: _elm_lang$core$Json_Encode$string(
+								A2(_elm_lang$core$Maybe$withDefault, '', _p7.poster))
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'first_air_date',
+								_1: _elm_lang$core$Json_Encode$string(_p7.dataInicio)
+							},
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '_Tuple2',
+									_0: 'popularity',
+									_1: _elm_lang$core$Json_Encode$float(_p7.popularidade)
+								},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};

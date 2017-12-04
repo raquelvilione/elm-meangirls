@@ -1,0 +1,92 @@
+var _user$project$Decodes$decodeSeriesGenero = A2(
+	_elm_lang$core$Json_Decode$field,
+	'results',
+	_elm_lang$core$Json_Decode$list(
+		A3(
+			_elm_lang$core$Json_Decode$map2,
+			_user$project$Aliases$SeriesGenero,
+			A2(_elm_lang$core$Json_Decode$field, 'original_name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int))));
+var _user$project$Decodes$decodeGeneros = A2(
+	_elm_lang$core$Json_Decode$field,
+	'genres',
+	_elm_lang$core$Json_Decode$list(
+		A3(
+			_elm_lang$core$Json_Decode$map2,
+			_user$project$Aliases$Generos,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string))));
+var _user$project$Decodes$decodeEpisodios = A2(
+	_elm_lang$core$Json_Decode$field,
+	'episodes',
+	_elm_lang$core$Json_Decode$list(
+		A4(
+			_elm_lang$core$Json_Decode$map3,
+			_user$project$Aliases$Episodios,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'episode_number', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string))));
+var _user$project$Decodes$decodeTemporadas = A2(
+	_elm_lang$core$Json_Decode$field,
+	'seasons',
+	_elm_lang$core$Json_Decode$list(
+		A6(
+			_elm_lang$core$Json_Decode$map5,
+			_user$project$Aliases$Temporadas,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'episode_count', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'poster_path', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'season_number', _elm_lang$core$Json_Decode$int))));
+var _user$project$Decodes$decodeAiringToday = A2(
+	_elm_lang$core$Json_Decode$field,
+	'results',
+	_elm_lang$core$Json_Decode$list(
+		A8(
+			_elm_lang$core$Json_Decode$map7,
+			_user$project$Aliases$AiringToday,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
+			A2(
+				_elm_lang$core$Json_Decode$field,
+				'poster_path',
+				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
+			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
+			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
+var _user$project$Decodes$decodePopulares = A2(
+	_elm_lang$core$Json_Decode$field,
+	'results',
+	_elm_lang$core$Json_Decode$list(
+		A8(
+			_elm_lang$core$Json_Decode$map7,
+			_user$project$Aliases$Populares,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
+			A2(
+				_elm_lang$core$Json_Decode$field,
+				'poster_path',
+				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
+			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
+			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
+var _user$project$Decodes$decodeRespLogin = A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int);
+var _user$project$Decodes$decodeStock = A2(
+	_elm_lang$core$Json_Decode$field,
+	'results',
+	_elm_lang$core$Json_Decode$list(
+		A8(
+			_elm_lang$core$Json_Decode$map7,
+			_user$project$Aliases$Stock,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
+			A2(
+				_elm_lang$core$Json_Decode$field,
+				'poster_path',
+				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
+			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
+			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));

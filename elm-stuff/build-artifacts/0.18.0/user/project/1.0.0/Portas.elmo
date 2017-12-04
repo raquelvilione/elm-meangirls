@@ -1,0 +1,5 @@
+var _user$project$Portas$carousel = _elm_lang$core$Native_Platform.outgoingPort(
+	'carousel',
+	function (v) {
+		return v;
+	});

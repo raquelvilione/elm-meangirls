@@ -1,0 +1,55 @@
+var _user$project$Main$init = _user$project$Model$Model(
+	A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
+	A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+	{ctor: '[]'})(
+	{ctor: '[]'})('')('')(
+	{ctor: '[]'})(
+	A7(_user$project$Aliases$Populares, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+	A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+	{
+		ctor: '::',
+		_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
+		_1: {ctor: '[]'}
+	})(
+	{
+		ctor: '::',
+		_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
+		_1: {ctor: '[]'}
+	})(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Aliases$Generos, 0, ''),
+		_1: {ctor: '[]'}
+	})('')(
+	A2(_user$project$Aliases$SeriesGenero, '', 0))(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
+		_1: {ctor: '[]'}
+	})(_user$project$Type$PagIndex);
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{
+		init: {
+			ctor: '_Tuple2',
+			_0: _user$project$Main$init,
+			_1: _elm_lang$core$Platform_Cmd$batch(
+				{
+					ctor: '::',
+					_0: _user$project$Get$getPopulares,
+					_1: {
+						ctor: '::',
+						_0: _user$project$Get$getAiringToday,
+						_1: {
+							ctor: '::',
+							_0: _user$project$Get$getGeneros,
+							_1: {ctor: '[]'}
+						}
+					}
+				})
+		},
+		view: _user$project$View$view,
+		update: _user$project$Update$update,
+		subscriptions: function (_p0) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();

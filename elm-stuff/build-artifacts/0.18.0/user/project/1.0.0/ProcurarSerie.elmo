@@ -1,0 +1,355 @@
+var _user$project$ProcurarSerie$mudaString = A3(
+	_elm_lang$core$Regex$replace,
+	_elm_lang$core$Regex$All,
+	_elm_lang$core$Regex$regex(' '),
+	function (_p0) {
+		return '%20';
+	});
+var _user$project$ProcurarSerie$tiraAspas = function (palavra) {
+	return A2(
+		_elm_lang$core$String$filter,
+		function (x) {
+			return !_elm_lang$core$Native_Utils.eq(
+				x,
+				_elm_lang$core$Native_Utils.chr('\"'));
+		},
+		palavra);
+};
+var _user$project$ProcurarSerie$Model = F2(
+	function (a, b) {
+		return {symbol: a, stocks: b};
+	});
+var _user$project$ProcurarSerie$init = A2(
+	_user$project$ProcurarSerie$Model,
+	'',
+	{ctor: '[]'});
+var _user$project$ProcurarSerie$ResCadSerie = function (a) {
+	return {ctor: 'ResCadSerie', _0: a};
+};
+var _user$project$ProcurarSerie$CadSerie = function (a) {
+	return {ctor: 'CadSerie', _0: a};
+};
+var _user$project$ProcurarSerie$viewStock = function (stock) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('tutor-block'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$img,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$src(
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'http://image.tmdb.org/t/p/w185/',
+											_user$project$ProcurarSerie$tiraAspas(
+												_elm_lang$core$Basics$toString(
+													A2(_elm_lang$core$Maybe$withDefault, '', stock.poster))))),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$h5,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											_user$project$ProcurarSerie$tiraAspas(
+												_elm_lang$core$Basics$toString(stock.nome))),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$span,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('tutor-designation'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(
+												_elm_lang$core$Basics$toString(stock.mediaNota)),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$p,
+											{ctor: '[]'},
+											{ctor: '[]'}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$button,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onClick(
+																_user$project$ProcurarSerie$CadSerie(stock)),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('+'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$ProcurarSerie$Resposta = function (a) {
+	return {ctor: 'Resposta', _0: a};
+};
+var _user$project$ProcurarSerie$getStocks = function (symb) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$ProcurarSerie$Resposta,
+		A2(
+			_elm_lang$http$Http$get,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&query=',
+				_user$project$ProcurarSerie$mudaString(symb)),
+			_user$project$Decodes$decodeStock));
+};
+var _user$project$ProcurarSerie$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Symbol':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{symbol: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Submit':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$ProcurarSerie$getStocks(model.symbol)
+				};
+			case 'Resposta':
+				var _p2 = _p1._0;
+				if (_p2.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								symbol: _elm_lang$core$Basics$toString(_p2._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{stocks: _p2._0}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'CadSerie':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$ProcurarSerie$ResCadSerie,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodeSerie(_p1._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+			default:
+				var _p3 = _p1._0;
+				if (_p3.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								symbol: _elm_lang$core$Basics$toString(_p3._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								symbol: _elm_lang$core$Basics$toString(_p3._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+		}
+	});
+var _user$project$ProcurarSerie$Symbol = function (a) {
+	return {ctor: 'Symbol', _0: a};
+};
+var _user$project$ProcurarSerie$Submit = {ctor: 'Submit'};
+var _user$project$ProcurarSerie$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$form,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('form-search'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onSubmit(_user$project$ProcurarSerie$Submit),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('input-group'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$input,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('input-custom'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$type_('text'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$required(true),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$placeholder('Pesquisar'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Events$onInput(_user$project$ProcurarSerie$Symbol),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('input-group-btn'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$button,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$i,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('fa fa-search'),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					A2(_elm_lang$core$List$map, _user$project$ProcurarSerie$viewStock, model.stocks)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$ProcurarSerie$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _user$project$ProcurarSerie$init, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _user$project$ProcurarSerie$view,
+		update: _user$project$ProcurarSerie$update,
+		subscriptions: function (_p4) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();

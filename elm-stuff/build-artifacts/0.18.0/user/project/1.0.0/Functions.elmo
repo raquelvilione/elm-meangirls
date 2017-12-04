@@ -1,0 +1,17 @@
+var _user$project$Functions$mudaString = A3(
+	_elm_lang$core$Regex$replace,
+	_elm_lang$core$Regex$All,
+	_elm_lang$core$Regex$regex(' '),
+	function (_p0) {
+		return '%20';
+	});
+var _user$project$Functions$tiraAspas = function (palavra) {
+	return A2(
+		_elm_lang$core$String$filter,
+		function (x) {
+			return !_elm_lang$core$Native_Utils.eq(
+				x,
+				_elm_lang$core$Native_Utils.chr('\"'));
+		},
+		palavra);
+};

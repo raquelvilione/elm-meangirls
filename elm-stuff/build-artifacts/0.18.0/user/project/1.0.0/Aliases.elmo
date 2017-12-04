@@ -1,0 +1,36 @@
+var _user$project$Aliases$DadosUsuario = F6(
+	function (a, b, c, d, e, f) {
+		return {nome: a, sobrenome: b, email: c, senha: d, confirmarSenha: e, loginToken: f};
+	});
+var _user$project$Aliases$Stock = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
+	});
+var _user$project$Aliases$Populares = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
+	});
+var _user$project$Aliases$AiringToday = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
+	});
+var _user$project$Aliases$SerieAtual = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
+	});
+var _user$project$Aliases$Temporadas = F5(
+	function (a, b, c, d, e) {
+		return {id: a, episode_count: b, air_date: c, poster_path: d, season_number: e};
+	});
+var _user$project$Aliases$Episodios = F3(
+	function (a, b, c) {
+		return {id: a, episode_number: b, name: c};
+	});
+var _user$project$Aliases$Generos = F2(
+	function (a, b) {
+		return {id: a, nome: b};
+	});
+var _user$project$Aliases$SeriesGenero = F2(
+	function (a, b) {
+		return {nome: a, id: b};
+	});

@@ -1,0 +1,16 @@
+var _user$project$Post$postWhole = F3(
+	function (url, body, decoder) {
+		return _elm_lang$http$Http$request(
+			{
+				method: 'POST',
+				headers: {ctor: '[]'},
+				url: url,
+				body: body,
+				expect: _elm_lang$http$Http$expectStringResponse(
+					function (x) {
+						return _elm_lang$core$Result$Ok(x);
+					}),
+				timeout: _elm_lang$core$Maybe$Nothing,
+				withCredentials: false
+			});
+	});

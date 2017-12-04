@@ -1,0 +1,94 @@
+var _user$project$Type$RespostaSG = function (a) {
+	return {ctor: 'RespostaSG', _0: a};
+};
+var _user$project$Type$Buscar = {ctor: 'Buscar'};
+var _user$project$Type$GeneroEscolhido = function (a) {
+	return {ctor: 'GeneroEscolhido', _0: a};
+};
+var _user$project$Type$RespostaG = function (a) {
+	return {ctor: 'RespostaG', _0: a};
+};
+var _user$project$Type$RespostaEps = function (a) {
+	return {ctor: 'RespostaEps', _0: a};
+};
+var _user$project$Type$SubmitEpisodios = F2(
+	function (a, b) {
+		return {ctor: 'SubmitEpisodios', _0: a, _1: b};
+	});
+var _user$project$Type$RespostaTemp = function (a) {
+	return {ctor: 'RespostaTemp', _0: a};
+};
+var _user$project$Type$SubmitTemporada = function (a) {
+	return {ctor: 'SubmitTemporada', _0: a};
+};
+var _user$project$Type$VerSerie = function (a) {
+	return {ctor: 'VerSerie', _0: a};
+};
+var _user$project$Type$MudarPagina = function (a) {
+	return {ctor: 'MudarPagina', _0: a};
+};
+var _user$project$Type$ResCadSerieAiringToday = function (a) {
+	return {ctor: 'ResCadSerieAiringToday', _0: a};
+};
+var _user$project$Type$CadSerieAiringToday = function (a) {
+	return {ctor: 'CadSerieAiringToday', _0: a};
+};
+var _user$project$Type$RespostaAiringToday = function (a) {
+	return {ctor: 'RespostaAiringToday', _0: a};
+};
+var _user$project$Type$ResCadSeriesPopulares = function (a) {
+	return {ctor: 'ResCadSeriesPopulares', _0: a};
+};
+var _user$project$Type$CadSeriePopulares = function (a) {
+	return {ctor: 'CadSeriePopulares', _0: a};
+};
+var _user$project$Type$RespostaSeriesPopulares = function (a) {
+	return {ctor: 'RespostaSeriesPopulares', _0: a};
+};
+var _user$project$Type$ResCadastrarSerie = function (a) {
+	return {ctor: 'ResCadastrarSerie', _0: a};
+};
+var _user$project$Type$CadastrarSerie = function (a) {
+	return {ctor: 'CadastrarSerie', _0: a};
+};
+var _user$project$Type$RespostaSearch = function (a) {
+	return {ctor: 'RespostaSearch', _0: a};
+};
+var _user$project$Type$SymbolSearch = function (a) {
+	return {ctor: 'SymbolSearch', _0: a};
+};
+var _user$project$Type$SubmitSearch = {ctor: 'SubmitSearch'};
+var _user$project$Type$Login = function (a) {
+	return {ctor: 'Login', _0: a};
+};
+var _user$project$Type$RespostaLogin = function (a) {
+	return {ctor: 'RespostaLogin', _0: a};
+};
+var _user$project$Type$CadastrarUsuario = function (a) {
+	return {ctor: 'CadastrarUsuario', _0: a};
+};
+var _user$project$Type$RespostaCadastro = function (a) {
+	return {ctor: 'RespostaCadastro', _0: a};
+};
+var _user$project$Type$ConfirmarSenha = function (a) {
+	return {ctor: 'ConfirmarSenha', _0: a};
+};
+var _user$project$Type$Senha = function (a) {
+	return {ctor: 'Senha', _0: a};
+};
+var _user$project$Type$Email = function (a) {
+	return {ctor: 'Email', _0: a};
+};
+var _user$project$Type$Sobrenome = function (a) {
+	return {ctor: 'Sobrenome', _0: a};
+};
+var _user$project$Type$Nome = function (a) {
+	return {ctor: 'Nome', _0: a};
+};
+var _user$project$Type$PagSerieGenero = {ctor: 'PagSerieGenero'};
+var _user$project$Type$PagSerie = {ctor: 'PagSerie'};
+var _user$project$Type$PagStock = {ctor: 'PagStock'};
+var _user$project$Type$PagLogin = {ctor: 'PagLogin'};
+var _user$project$Type$PagValidation = {ctor: 'PagValidation'};
+var _user$project$Type$PagCadastro = {ctor: 'PagCadastro'};
+var _user$project$Type$PagIndex = {ctor: 'PagIndex'};

@@ -1,0 +1,33 @@
+var _user$project$Model$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return function (o) {
+															return function (p) {
+																return {usuario: a, pesqserie: b, seriespopulares: c, seriesairingtoday: d, mensagem: e, symbol: f, stocks: g, serieAtual: h, airingtoday: i, temporadas: j, episodios: k, generos: l, generoEscolhido: m, genero: n, seriesGenero: o, view: p};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};

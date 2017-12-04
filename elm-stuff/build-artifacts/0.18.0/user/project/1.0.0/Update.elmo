@@ -1,0 +1,440 @@
+var _user$project$Update$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'MudarPagina':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{view: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Nome':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							usuario: function (y) {
+								return _elm_lang$core$Native_Utils.update(
+									y,
+									{nome: _p0._0});
+							}(model.usuario)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Sobrenome':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							usuario: function (y) {
+								return _elm_lang$core$Native_Utils.update(
+									y,
+									{sobrenome: _p0._0});
+							}(model.usuario)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Email':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							usuario: function (y) {
+								return _elm_lang$core$Native_Utils.update(
+									y,
+									{email: _p0._0});
+							}(model.usuario)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Senha':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							usuario: function (y) {
+								return _elm_lang$core$Native_Utils.update(
+									y,
+									{senha: _p0._0});
+							}(model.usuario)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'ConfirmarSenha':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							usuario: function (y) {
+								return _elm_lang$core$Native_Utils.update(
+									y,
+									{confirmarSenha: _p0._0});
+							}(model.usuario)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'RespostaCadastro':
+				var _p1 = _p0._0;
+				if (_p1.ctor === 'Err') {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								view: _elm_lang$core$Native_Utils.eq(_p1._0.status.code, 201) ? _user$project$Type$PagLogin : _user$project$Type$PagCadastro
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'CadastrarUsuario':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$Type$RespostaCadastro,
+						A3(
+							_user$project$Post$postWhole,
+							'https://meangirls-raquelvilione.c9users.io/usuario/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodeUsuario(_p0._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+			case 'RespostaLogin':
+				var _p2 = _p0._0;
+				if (_p2.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p2._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{mensagem: 'LOGADO'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'Login':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$Type$RespostaLogin,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/login/',
+							_elm_lang$http$Http$jsonBody(
+								A2(_user$project$Encodes$encodeDadosUsuario, model.usuario.email, model.usuario.senha)),
+							_user$project$Decodes$decodeRespLogin))
+				};
+			case 'SymbolSearch':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{symbol: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'SubmitSearch':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Get$getStocks(model.symbol)
+				};
+			case 'RespostaSearch':
+				var _p3 = _p0._0;
+				if (_p3.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								symbol: _elm_lang$core$Basics$toString(_p3._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{stocks: _p3._0}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'CadastrarSerie':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$Type$ResCadastrarSerie,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodeSerie(_p0._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+			case 'ResCadastrarSerie':
+				var _p4 = _p0._0;
+				if (_p4.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								symbol: _elm_lang$core$Basics$toString(_p4._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								symbol: _elm_lang$core$Basics$toString(_p4._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'RespostaSeriesPopulares':
+				var _p5 = _p0._0;
+				if (_p5.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p5._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{seriespopulares: _p5._0, mensagem: 'ok'}),
+						_1: _user$project$Portas$carousel('')
+					};
+				}
+			case 'CadSeriePopulares':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$Type$ResCadSeriesPopulares,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodePopulares(_p0._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+			case 'ResCadSeriesPopulares':
+				var _p6 = _p0._0;
+				if (_p6.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p6._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+			case 'RespostaAiringToday':
+				var _p7 = _p0._0;
+				if (_p7.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p7._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{seriesairingtoday: _p7._0, mensagem: 'ok'}),
+						_1: _user$project$Portas$carousel('')
+					};
+				}
+			case 'CadSerieAiringToday':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$Type$ResCadSerieAiringToday,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodeAiringToday(_p0._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+			case 'ResCadSerieAiringToday':
+				var _p8 = _p0._0;
+				if (_p8.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p8._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+			case 'VerSerie':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{serieAtual: _p0._0, view: _user$project$Type$PagSerie}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'SubmitTemporada':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Get$getTemporadas(
+						_elm_lang$core$Basics$toString(_p0._0))
+				};
+			case 'RespostaTemp':
+				var _p9 = _p0._0;
+				if (_p9.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{mensagem: 'hioyioshjdf'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{temporadas: _p9._0}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'SubmitEpisodios':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Get$getEpisodios(
+						{
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Basics$toString(_p0._0),
+							_1: _elm_lang$core$Basics$toString(_p0._1)
+						})
+				};
+			case 'RespostaEps':
+				var _p10 = _p0._0;
+				if (_p10.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{mensagem: 'hioyioshjdf'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{episodios: _p10._0}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'RespostaG':
+				var _p11 = _p0._0;
+				if (_p11.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p11._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{generos: _p11._0, mensagem: 'ok'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'GeneroEscolhido':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{generoEscolhido: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Buscar':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Get$getSeriesGenero(model.generoEscolhido)
+				};
+			default:
+				var _p12 = _p0._0;
+				if (_p12.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p12._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{seriesGenero: _p12._0, mensagem: 'blz', view: _user$project$Type$PagSerieGenero}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+		}
+	});

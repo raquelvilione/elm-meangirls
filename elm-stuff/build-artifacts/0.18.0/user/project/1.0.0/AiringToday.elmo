@@ -1,0 +1,159 @@
+var _user$project$AiringToday$tiraAspas = function (palavra) {
+	return A2(
+		_elm_lang$core$String$filter,
+		function (x) {
+			return !_elm_lang$core$Native_Utils.eq(
+				x,
+				_elm_lang$core$Native_Utils.chr('\"'));
+		},
+		palavra);
+};
+var _user$project$AiringToday$viewAiringToday = function (airingtodayy) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('item'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('tutor-block'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$img,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$src(
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'http://image.tmdb.org/t/p/w185/',
+											_user$project$AiringToday$tiraAspas(
+												_elm_lang$core$Basics$toString(
+													A2(_elm_lang$core$Maybe$withDefault, '', airingtodayy.poster))))),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$AiringToday$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$id('owl-airingtoday'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('owl-carousel owl-theme'),
+				_1: {ctor: '[]'}
+			}
+		},
+		A2(_elm_lang$core$List$map, _user$project$AiringToday$viewAiringToday, model.airingtoday));
+};
+var _user$project$AiringToday$Model = F2(
+	function (a, b) {
+		return {mensagem: a, airingtoday: b};
+	});
+var _user$project$AiringToday$init = A2(
+	_user$project$AiringToday$Model,
+	'',
+	{ctor: '[]'});
+var _user$project$AiringToday$ResCadSerie = function (a) {
+	return {ctor: 'ResCadSerie', _0: a};
+};
+var _user$project$AiringToday$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Resposta':
+				var _p1 = _p0._0;
+				if (_p1.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p1._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{airingtoday: _p1._0, mensagem: 'ok'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'CadSerie':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$AiringToday$ResCadSerie,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodeAiringToday(_p0._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+			default:
+				var _p2 = _p0._0;
+				if (_p2.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p2._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+		}
+	});
+var _user$project$AiringToday$CadSerie = function (a) {
+	return {ctor: 'CadSerie', _0: a};
+};
+var _user$project$AiringToday$Resposta = function (a) {
+	return {ctor: 'Resposta', _0: a};
+};
+var _user$project$AiringToday$getAiringToday = A2(
+	_elm_lang$http$Http$send,
+	_user$project$AiringToday$Resposta,
+	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/tv/airing_today?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=en-US&page=1', _user$project$Decodes$decodePopulares));
+var _user$project$AiringToday$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _user$project$AiringToday$init, _1: _user$project$AiringToday$getAiringToday},
+		view: _user$project$AiringToday$view,
+		update: _user$project$AiringToday$update,
+		subscriptions: function (_p3) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();

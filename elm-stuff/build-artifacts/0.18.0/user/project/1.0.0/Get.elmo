@@ -1,0 +1,67 @@
+var _user$project$Get$getSeriesGenero = function (s) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Type$RespostaSG,
+		A2(
+			_elm_lang$http$Http$get,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=',
+				A2(_elm_lang$core$Basics_ops['++'], s, '&include_null_first_air_dates=false')),
+			_user$project$Decodes$decodeSeriesGenero));
+};
+var _user$project$Get$getGeneros = A2(
+	_elm_lang$http$Http$send,
+	_user$project$Type$RespostaG,
+	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/genre/tv/list?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR', _user$project$Decodes$decodeGeneros));
+var _user$project$Get$getEpisodios = function (_p0) {
+	var _p1 = _p0;
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Type$RespostaEps,
+		A2(
+			_elm_lang$http$Http$get,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'https://api.themoviedb.org/3/tv/',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_p1._0,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'/season/',
+						A2(_elm_lang$core$Basics_ops['++'], _p1._1, '?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR')))),
+			_user$project$Decodes$decodeEpisodios));
+};
+var _user$project$Get$getTemporadas = function (valor) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Type$RespostaTemp,
+		A2(
+			_elm_lang$http$Http$get,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'https://api.themoviedb.org/3/tv/',
+				A2(_elm_lang$core$Basics_ops['++'], valor, '?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=en-US')),
+			_user$project$Decodes$decodeTemporadas));
+};
+var _user$project$Get$getAiringToday = A2(
+	_elm_lang$http$Http$send,
+	_user$project$Type$RespostaAiringToday,
+	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/tv/airing_today?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR', _user$project$Decodes$decodePopulares));
+var _user$project$Get$getPopulares = A2(
+	_elm_lang$http$Http$send,
+	_user$project$Type$RespostaSeriesPopulares,
+	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/tv/popular?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR', _user$project$Decodes$decodePopulares));
+var _user$project$Get$getStocks = function (symb) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Type$RespostaSearch,
+		A2(
+			_elm_lang$http$Http$get,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&query=',
+				_user$project$Functions$mudaString(symb)),
+			_user$project$Decodes$decodeStock));
+};

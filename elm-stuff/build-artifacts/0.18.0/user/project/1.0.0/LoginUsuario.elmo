@@ -1,0 +1,170 @@
+var _user$project$LoginUsuario$Model = F3(
+	function (a, b, c) {
+		return {email: a, senha: b, mensagem: c};
+	});
+var _user$project$LoginUsuario$init = A3(_user$project$LoginUsuario$Model, '', '', '');
+var _user$project$LoginUsuario$Login = function (a) {
+	return {ctor: 'Login', _0: a};
+};
+var _user$project$LoginUsuario$Resposta = function (a) {
+	return {ctor: 'Resposta', _0: a};
+};
+var _user$project$LoginUsuario$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Email':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{email: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Senha':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{senha: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Resposta':
+				var _p1 = _p0._0;
+				if (_p1.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p1._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{mensagem: 'LOGADO'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$LoginUsuario$Resposta,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/login/',
+							_elm_lang$http$Http$jsonBody(
+								A2(_user$project$Encodes$encodeDadosUsuario, model.email, model.senha)),
+							_user$project$Decodes$decodeRespLogin))
+				};
+		}
+	});
+var _user$project$LoginUsuario$Senha = function (a) {
+	return {ctor: 'Senha', _0: a};
+};
+var _user$project$LoginUsuario$Email = function (a) {
+	return {ctor: 'Email', _0: a};
+};
+var _user$project$LoginUsuario$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('col-md-4 col-md-offset-4 col-xs-12'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$input,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$type_('text'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$placeholder('Email'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$LoginUsuario$Email),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$input,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$type_('password'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('Senha'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$LoginUsuario$Senha),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('btn-padrao'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(
+									_user$project$LoginUsuario$Login(model)),
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Login'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(model.mensagem),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$LoginUsuario$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _user$project$LoginUsuario$init, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _user$project$LoginUsuario$view,
+		update: _user$project$LoginUsuario$update,
+		subscriptions: function (_p2) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();
