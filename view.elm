@@ -171,6 +171,12 @@ viewPopulares2 model =
         ]
         , div [id "owl-populares", class "owl-carousel owl-theme"] (List.map viewPopulares model.seriespopulares)
     ]
+-- ---------------------------------------------------------
+-- EPÍSODIOS
+-- ---------------------------------------------------------
+viewEpisodios : Int -> Html Msg
+viewEpisodios idE =
+    div [class "episodio"] [text ("Episódio " ++ (tiraAspas <| toString idE))]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
