@@ -39,6 +39,14 @@ decodeAiringToday =
                                       (field "first_air_date" string)
                                       (field "popularity" float)
                                       (field "overview" string)
+                                      
+decodeTemporadas : Decoder (List Temporadas)
+decodeTemporadas = 
+        field "seasons" <| list <| map5 Temporadas  (field "id" int) 
+                                                    (field "episode_count" int)
+                                                    (field "air_date" string)
+                                                    (field "poster_path" string)
+                                                    (field "season_number" int)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
