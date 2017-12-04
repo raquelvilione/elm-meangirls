@@ -19,6 +19,20 @@ encodeSerie {id_,
                             ("poster_path", string <| Maybe.withDefault "" poster),
                             ("first_air_date", string dataInicio),
                             ("popularity", float popularidade)]
+                            
+encodeUsuario : DadosUsuario -> Value
+encodeUsuario { 
+            nome, 
+            sobrenome, 
+            email, 
+            senha} = object [
+                            ("nome", string nome),
+                            ("sobrenome", string sobrenome),
+                            ("email", string email),
+                            ("senha", string senha)]
+                            
+encodeDadosUsuario : String -> String -> Value
+encodeDadosUsuario email senha = list [ string email, string senha ]
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
