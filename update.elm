@@ -79,6 +79,21 @@ update msg model =
             case resposta of
                 Err x -> ({ model | symbol = toString x}, Cmd.none)
                 Ok lista -> ({model | symbol = toString lista}, Cmd.none)
+-- ---------------------------------------------------------
+-- POPULARES
+-- ---------------------------------------------------------
+        RespostaSeriesPopulares resp ->
+            case resp of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok lista -> ({model | seriespopulares = lista, mensagem = "ok"}, carousel "")
+        
+        CadSeriePopulares popular ->
+            (model, Http.send ResCadSeriesPopulares <| post "https://meangirls-raquelvilione.c9users.io/serie/inserir" (jsonBody (encodePopulares popular)) int)
+            
+        ResCadSeriesPopulares resposta ->
+            case resposta of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok lista -> (model, Cmd.none)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
