@@ -53,6 +53,16 @@ decodeEpisodios =
         field "episodes" <| list <| map3 Episodios  (field "id" int) 
                                                     (field "episode_number" int)
                                                     (field "name" string)
+                                                    
+decodeGeneros : Decoder (List Generos)
+decodeGeneros = 
+        field "genres" <| list <| map2 Generos (field "id" int)
+                                            (field "name" string)
+      
+decodeSeriesGenero : Decoder (List SeriesGenero)
+decodeSeriesGenero = 
+        field "results" <| list <| map2 SeriesGenero (field "original_name" string)
+                                                     (field "id" int)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
