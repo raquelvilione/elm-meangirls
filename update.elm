@@ -109,6 +109,27 @@ update msg model =
             case resposta of
                 Err x -> ({ model | mensagem = toString x}, Cmd.none)
                 Ok lista -> (model, Cmd.none)
+-- ---------------------------------------------------------
+-- SÉRIE
+-- ---------------------------------------------------------                
+        VerSerie dadosSerie ->
+            ({ model | serieAtual = dadosSerie, view = PagSerie}, Cmd.none)
+        
+        SubmitTemporada id ->
+            (model, getTemporadas <| toString id)
+        
+        RespostaTemp x ->
+            case x of
+                Err y -> ({model | mensagem = "hioyioshjdf"}, Cmd.none)
+                Ok y  -> ({model | temporadas = y}, Cmd.none)
+        
+        SubmitEpisodios idS numT ->
+            (model, getEpisodios (toString idS, toString numT))
+        
+        RespostaEps z  ->
+            case z of
+                Err y -> ({model | mensagem = "hioyioshjdf"}, Cmd.none)
+                Ok y  -> ({model | episodios = y}, Cmd.none)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
