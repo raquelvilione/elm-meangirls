@@ -177,6 +177,22 @@ viewPopulares2 model =
 viewEpisodios : Int -> Html Msg
 viewEpisodios idE =
     div [class "episodio"] [text ("Episódio " ++ (tiraAspas <| toString idE))]
+-- ---------------------------------------------------------
+-- TEMPORADAS
+-- ---------------------------------------------------------
+viewTemporada : Temporadas -> Html Msg
+viewTemporada model =
+    div [class "row temporada"] [
+        div [class "col-lg-3 col-md-3 col-sm-3 col-xs-12"] [
+            img [class "img-responsive", src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString model.poster_path))] []
+        ]
+        , div [class "col-lg-9 col-md-9 col-sm-9 col-xs-12"] [
+            h1 [] [text ("TEMPORADA " ++ (tiraAspas <| toString model.season_number))]
+            , p [] [text ("Número de episódios: " ++ (tiraAspas <| toString model.episode_count))]
+            -- , div [] [button [onClick (SubmitEpisodios 1402 model.season_number)] [text "Visualizar Episodios"]]
+            , div [] (List.map viewEpisodios (List.range 1 model.episode_count))
+        ]
+    ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
