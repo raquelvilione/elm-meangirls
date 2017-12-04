@@ -16,6 +16,9 @@ decodeStock =
                                       (field "first_air_date" string)
                                       (field "popularity" float)
                                       (field "overview" string)
+                                      
+decodeRespLogin : Decoder (Int)
+decodeRespLogin = field "id" <| int 
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
