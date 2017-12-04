@@ -81,6 +81,31 @@ viewCadastro model =
         , viewValidation model
         ]
   ]
+-- ---------------------------------------------------------
+-- LOGIN USUÁRIO
+-- ---------------------------------------------------------
+viewValidation : Model -> Html msg
+viewValidation model =
+  let
+    (color, message) =
+      if model.usuario.senha == model.usuario.confirmarSenha then
+        ("green", "")
+      else
+        ("white", "As senhas são diferentes!")
+  in
+    div [ style [("color", color), ("text-align","center"),("margin-top","10px")] ] [ text message ]
+    
+viewLogin : Model -> Html Msg
+viewLogin model =
+  div [class "container align"] [
+    h1 [class "title-tvbox text-center"] [text "tvbox"]
+    , div [class "col-md-4 col-md-offset-4 col-xs-12"]
+        [
+        input [class "input-custom-register", type_ "text", required True, value model.usuario.email, placeholder "Email", onInput Email] []
+        , input [class "input-custom-register", type_ "password", required True, value model.usuario.senha, placeholder "Senha", onInput Senha ] []
+        , button [class "btn-padrao",  onClick (Login model.usuario)] [text "Login"]
+        ]
+   ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
