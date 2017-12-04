@@ -47,6 +47,12 @@ decodeTemporadas =
                                                     (field "air_date" string)
                                                     (field "poster_path" string)
                                                     (field "season_number" int)
+                                                    
+decodeEpisodios : Decoder (List Episodios)
+decodeEpisodios = 
+        field "episodes" <| list <| map3 Episodios  (field "id" int) 
+                                                    (field "episode_number" int)
+                                                    (field "name" string)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
