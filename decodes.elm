@@ -20,8 +20,19 @@ decodeStock =
 decodeRespLogin : Decoder (Int)
 decodeRespLogin = field "id" <| int 
 
+decodePopulares : Decoder (List Populares)
 decodePopulares = 
         field "results" <| list <| map7 Populares (field "id" int)
+                                      (field "name" string)
+                                      (field "vote_average" float)
+                                      (field "poster_path" <| nullable string)
+                                      (field "first_air_date" string)
+                                      (field "popularity" float)
+                                      (field "overview" string)
+                                      
+decodeAiringToday : Decoder (List AiringToday)
+decodeAiringToday = 
+        field "results" <| list <| map7 AiringToday (field "id" int)
                                       (field "name" string)
                                       (field "vote_average" float)
                                       (field "poster_path" <| nullable string)
