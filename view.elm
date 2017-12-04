@@ -144,6 +144,33 @@ viewSearch model =
                     , div [] (List.map viewStock model.stocks)
             ]
     ]
+-- ---------------------------------------------------------
+-- POPULARES
+-- ---------------------------------------------------------        
+viewPopulares : Populares -> Html Msg
+viewPopulares popular =
+    div [class "item"] [ 
+        div [class "tutor-block project wow animated animated4 fadeInLeft"] [
+            div [class "tutor-img"] [
+                img [src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" popular.poster))] []
+                , div [class "project-hover"] [
+                    h1 [class "title-item-carousel"] [text <| tiraAspas <| toString popular.nome]
+                    , hr [] []
+                    , p [] []
+                    , button [class "ver-mais", onClick (VerSerie popular)] [text "visualizar"]
+                ]
+            ]
+        ]
+    ]
+
+viewPopulares2 : Model -> Html Msg
+viewPopulares2 model =
+    div [class "espac"] [
+        div [class "container"] [
+            h1 [class "title-tvbox"] [text "AS MAIS POPULARES"]
+        ]
+        , div [id "owl-populares", class "owl-carousel owl-theme"] (List.map viewPopulares model.seriespopulares)
+    ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
