@@ -47,6 +47,17 @@ update msg model =
           
         CadastrarUsuario dadosUser ->
             (model, Http.send RespostaCadastro <| postWhole "https://meangirls-raquelvilione.c9users.io/usuario/inserir" (jsonBody (encodeUsuario dadosUser)) int)
+-- ---------------------------------------------------------
+-- LOGIN
+-- ---------------------------------------------------------
+        RespostaLogin resp ->
+            case resp of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                -- Ok lista -> ({model | dados = lista}, Cmd.none)
+                Ok x -> ({ model | mensagem = "LOGADO" }, Cmd.none)
+                
+        Login dadoslogin ->
+            (model, Http.send RespostaLogin <| post "https://meangirls-raquelvilione.c9users.io/login/" (jsonBody (encodeDadosUsuario model.usuario.email model.usuario.senha)) decodeRespLogin)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
