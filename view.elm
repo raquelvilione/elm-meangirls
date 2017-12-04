@@ -257,6 +257,29 @@ viewAiringToday2 model =
         ]
         , div [id "owl-airingtoday", class "owl-carousel owl-theme"] (List.map viewAiringToday model.seriesairingtoday)
     ]
+-- ---------------------------------------------------------
+-- GÊNEROS
+-- ---------------------------------------------------------
+viewGeneros : (Generos) -> Html Msg
+viewGeneros (genero) =
+    option [value <| toString genero.id] [text genero.nome]
+
+viewSeriesG : Generos -> Html Msg
+viewSeriesG model =
+        div [class "col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30"] [ 
+            div [class "tutor-block"] [
+                div [class "tutor-block"] [
+                     div [class "tutor-content"] [
+                        h5 [class "tutor-title"] [text <| tiraAspas <| toString model.nome]
+                        , span [class "tutor-designation"] [text <| toString model.id]
+                    ]
+                ]
+            ]
+        ]
+
+viewSeriesGenero : Model -> Html Msg
+viewSeriesGenero model =
+        div [] (List.map viewSeriesG model.seriesGenero)
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
