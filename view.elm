@@ -193,6 +193,44 @@ viewTemporada model =
             , div [] (List.map viewEpisodios (List.range 1 model.episode_count))
         ]
     ]
+-- ---------------------------------------------------------
+-- SÉRIE
+-- ---------------------------------------------------------
+viewSerie : Model -> Html Msg
+viewSerie model = 
+    div [] [
+    div [id "mostra-serie"] [
+    div [class "container"] [
+        div [class "col-lg-3 col-md-3 col-sm-3 col-xs-12"] [ 
+            div [class "tutor-img"] [
+                img [class "img-responsive", src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" model.serieAtual.poster))] []
+            ]
+        ]
+        , div [class "col-lg-9 col-md-9 col-sm-9 col-xs-12"] [
+            div [class "col-lg-12"] [
+                    h5 [class "tutor-title"] [text <| tiraAspas <| toString model.serieAtual.nome]
+                    
+                   , div [id "rate"] [
+                    img [class "img-responsive", src ("/imagens/favorite.png")] []
+                    , span [class "tutor-designation"] [text <| toString model.serieAtual.mediaNota]
+                    ]
+                ]
+            , div [class "col-lg-12 sinopse"] [
+                p [] [text <| tiraAspas <| toString model.serieAtual.sinopse]
+                , div [] [button [] [text "Adicionar a minha lista"]]
+                -- , div [] [button [onClick (SubmitTemporada model.serieAtual.id_)] [text "Visualizar Temporadas"]]
+            ]
+        ]
+    ]
+    ]
+    , div [class "page-scroll text-center"] [
+                    h1 [] [text "Visualizar Temporadas"]
+                    , a [href "#temporadas", class "btn btn-circle", onClick (SubmitTemporada model.serieAtual.id_)] [
+                        i [class "fa fa-angle-down fa-2x animated"] []
+                    ]
+                ]
+    , div [id "temporadas", class "container"] (List.map viewTemporada model.temporadas)
+    ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
