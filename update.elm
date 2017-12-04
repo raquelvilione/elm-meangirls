@@ -130,6 +130,24 @@ update msg model =
             case z of
                 Err y -> ({model | mensagem = "hioyioshjdf"}, Cmd.none)
                 Ok y  -> ({model | episodios = y}, Cmd.none)
+-- ---------------------------------------------------------
+-- GÊNEROS
+-- ---------------------------------------------------------
+        RespostaG resp ->
+            case resp of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok lista -> ({model | generos = lista, mensagem = "ok"}, Cmd.none)
+        
+        GeneroEscolhido g ->
+            ({ model | generoEscolhido = g }, Cmd.none)
+        
+        Buscar ->
+            (model, getSeriesGenero model.generoEscolhido)
+        
+        RespostaSG r ->
+            case r of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok l -> ({model | seriesGenero = l, mensagem = "blz", view = PagSerieGenero}, Cmd.none)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------
