@@ -34,6 +34,9 @@ getGeneros = send RespostaG <| get ("https://api.themoviedb.org/3/genre/tv/list?
 
 getSeriesGenero : String -> Cmd Msg
 getSeriesGenero s = send RespostaSG <| get ("https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=" ++ s ++ "&include_null_first_air_dates=false") decodeSeriesGenero
+
+getMinhaLista : String -> Cmd Msg
+getMinhaLista x = send RespostaMinhaLista <| get ("https://meangirls-raquelvilione.c9users.io//serie/listar-todas/" ++ x) decodeStock
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
