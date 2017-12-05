@@ -22,9 +22,27 @@ import Type exposing (..)
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
+        MudarPagina PagLogin ->
+            (Model
+                (DadosUsuario "" "" "" "" "" "")
+                (Stock 0 "" 0 Nothing "" 0 "")
+                [] [] "" "" [] []
+                (SerieAtual 0 "" 0 Nothing "" 0 "")
+                (AiringToday 0 "" 0 Nothing "" 0 "")
+                [Temporadas 0 0 "" "" 0]
+                [Episodios 0 0 ""]
+                [Generos 0 ""]
+                ""
+                (SeriesGenero "" 0)
+                [SeriesGenero "" 0]
+                PagLogin, Cmd.batch [getPopulares, getAiringToday, getGeneros])
+        MudarPagina PagMinhaLista ->
+            ({ model | view = PagMinhaLista}, getMinhaLista model.usuario.loginToken)
         MudarPagina x ->
-            ({ model | view = x}, Cmd.none)
-    -- CADASTRO USUÁRIO
+            ({ model | view = x }, Cmd.none)
+-- ----------------------------------------------------------------------------------------------------------------------
+-- CADASTRO USUÁRIO
+-- ----------------------------------------------------------------------------------------------------------------------
         Nome x ->
             ({ model | usuario = (\y -> {y | nome = x}) model.usuario}, Cmd.none)
           
@@ -54,7 +72,7 @@ update msg model =
             case resp of
                 Err x -> ({ model | mensagem = toString x}, Cmd.none)
                 -- Ok lista -> ({model | dados = lista}, Cmd.none)
-                Ok x -> ({ model | mensagem = "LOGADO" }, Cmd.none)
+                Ok x -> ({ model | usuario = (\y -> {y | loginToken = x}) model.usuario, view = PagStock }, Cmd.none)
                 
         Login dadoslogin ->
             (model, Http.send RespostaLogin <| post "https://meangirls-raquelvilione.c9users.io/login/" (jsonBody (encodeDadosUsuario model.usuario.email model.usuario.senha)) decodeRespLogin)
@@ -65,7 +83,7 @@ update msg model =
             ({ model | symbol = digitado }, Cmd.none)
 
         SubmitSearch ->
-            (model, getStocks model.symbol)
+            ({model | view = PagSearch}, getStocks model.symbol)
 
         RespostaSearch resp ->
             case resp of
@@ -73,7 +91,7 @@ update msg model =
                 Ok lista -> ({model | stocks = lista}, Cmd.none)
         
         CadastrarSerie stock ->
-            (model, Http.send ResCadastrarSerie <| post "https://meangirls-raquelvilione.c9users.io/serie/inserir" (jsonBody (encodeSerie stock)) int)
+            (model, Http.send ResCadastrarSerie <| post ("https://meangirls-raquelvilione.c9users.io/serie/inserir/" ++ model.usuario.loginToken) (jsonBody (encodeSerie stock)) int)
             
         ResCadastrarSerie resposta ->
             case resposta of
@@ -139,7 +157,7 @@ update msg model =
                 Ok lista -> ({model | generos = lista, mensagem = "ok"}, Cmd.none)
         
         GeneroEscolhido g ->
-            ({ model | generoEscolhido = g }, Cmd.none)
+            ({ model | generoEscolhido = g }, getSeriesGenero model.generoEscolhido)
         
         Buscar ->
             (model, getSeriesGenero model.generoEscolhido)
