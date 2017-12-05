@@ -9,7 +9,7 @@ import Aliases exposing (..)
 -- ----------------------------------------------------------------------------------------------------------------------
 decodeStock : Decoder (List Stock)
 decodeStock = 
-        field "results" <| list <| map7 Stock (field "id" int)
+        field "resp" <| list <| map7 Stock (field "idApi" int)
                                       (field "name" string)
                                       (field "vote_average" float)
                                       (field "poster_path" <| nullable string)
@@ -17,8 +17,8 @@ decodeStock =
                                       (field "popularity" float)
                                       (field "overview" string)
                                       
-decodeRespLogin : Decoder (Int)
-decodeRespLogin = field "id" <| int 
+decodeRespLogin : Decoder String
+decodeRespLogin = field "resp" <| string
 
 decodePopulares : Decoder (List Populares)
 decodePopulares = 
