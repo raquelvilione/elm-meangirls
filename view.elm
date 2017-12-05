@@ -30,33 +30,40 @@ view model =
                              , span [class "icon-bar"][]
                              , span [class "icon-bar"][]
                         ]
-                        , a [class "navbar-brand title-tvbox", href "#"][text "tvbox"]
+                        , a [class "navbar-brand title-tvbox", href "#"][text "tvbox",text model.mensagem]
                     ]
-                    , div [class "collapse navbar-collapse"][
-                        ul [class "nav navbar-nav navbar-right"][
-                            li [] [ a [href "#", onClick (MudarPagina PagLogin)]      [text "Login"]]
-                            , li [] [ a [href "#", onClick (MudarPagina PagCadastro)]      [text "Cadastro"]]
-                            , li [] [ a [href "#", onClick (MudarPagina PagStock)]      [text "Logado"]]
-                            -- , li [] [ a [href "#sair"]  [span [class "glyphicon glyphicon-off"] [b [] [text "SAIR"]]]]
-                        ]
-                        , div [id "genres-select", class "navbar-form navbar-right"] [
-                            div [class "form-group"] [
-                            select [onInput GeneroEscolhido] (List.map viewGeneros model.generos)
+                    , div [class "collapse navbar-collapse"]
+                        (if (model.usuario.loginToken /= "") then
+                            [ul [class "nav navbar-nav navbar-right"]
+                                [ viewSearch model
+                                ,li [] [ a [href "#", onClick (MudarPagina PagStock)]       [text "Home"]]
+                                ,li [] [ a [href "#", onClick (MudarPagina PagMinhaLista)]  [text "Minha Lista"]]
+                                ,li [] [ a [href "#", onClick (MudarPagina PagLogin)]       [text "Sair"]]]
+                            , div [id "genres-select", class "navbar-form navbar-right"] [
+                                    div [class "form-group"] [
+                                        select [onInput GeneroEscolhido] (List.map viewGeneros model.generos)
+                                    ]
+                                ]
                             ]
-                            , button [onClick (Buscar)] [i [class "fa fa-search"] []]
+                        else
+                            [ul [class "nav navbar-nav navbar-right"]
+                                [ li [] [ a [href "#", onClick (MudarPagina PagLogin)]      [text "Login"]]
+                                , li [] [ a [href "#", onClick (MudarPagina PagCadastro)]   [text "Cadastro"]]
+                                ]
+                            ])
                         ]
                     ]
                 ]
-            ]
-        ]
         , case model.view of
             PagCadastro -> viewCadastro model
             PagValidation -> viewValidation model
             PagLogin -> viewLogin model
-            PagStock -> div [] [viewSearch model, viewPopulares2 model, viewAiringToday2 model]
+            PagSearch -> viewStock2 model
+            PagStock -> div [] [viewPopulares2 model, viewAiringToday2 model]
             PagIndex -> viewIndex model
             PagSerie -> viewSerie model
             PagSerieGenero -> viewSeriesGenero model
+            PagMinhaLista -> viewMinhaLista2 model
     ]
 -- ---------------------------------------------------------
 -- INDEX
@@ -99,11 +106,11 @@ viewLogin : Model -> Html Msg
 viewLogin model =
   div [class "container align"] [
     h1 [class "title-tvbox text-center"] [text "tvbox"]
-    , div [class "col-md-4 col-md-offset-4 col-xs-12"]
+    , form [class "col-md-4 col-md-offset-4 col-xs-12", onSubmit (Login model.usuario)]
         [
         input [class "input-custom-register", type_ "text", required True, value model.usuario.email, placeholder "Email", onInput Email] []
         , input [class "input-custom-register", type_ "password", required True, value model.usuario.senha, placeholder "Senha", onInput Senha ] []
-        , button [class "btn-padrao",  onClick (Login model.usuario)] [text "Login"]
+        , button [class "btn-padrao"] [text "Login"]
         ]
    ]
 -- ---------------------------------------------------------
@@ -123,6 +130,14 @@ viewStock stock =
                 ]
             ]
         ]
+viewStock2 : Model -> Html Msg
+viewStock2 model =
+    div [class "espac"] [
+        div [class "container"] [
+            h1 [class "title-tvbox"] [text "SÉRIES"]
+        ]
+        , div [] (List.map viewStock model.stocks)
+    ]
 -- --------------------------------------------------------- 
 -- PESQUISA
 -- ---------------------------------------------------------    
@@ -141,7 +156,7 @@ viewSearch model =
                         ]
                     ]
                 ]
-                    , div [] (List.map viewStock model.stocks)
+                --    , div [] (List.map viewStock model.stocks)
             ]
     ]
 -- ---------------------------------------------------------
@@ -217,7 +232,7 @@ viewSerie model =
                 ]
             , div [class "col-lg-12 sinopse"] [
                 p [] [text <| tiraAspas <| toString model.serieAtual.sinopse]
-                , div [] [button [] [text "Adicionar a minha lista"]]
+                , div [] [button [onClick (CadastrarSerie model.serieAtual)] [text "Adicionar a minha lista"]]
                 -- , div [] [button [onClick (SubmitTemporada model.serieAtual.id_)] [text "Visualizar Temporadas"]]
             ]
         ]
