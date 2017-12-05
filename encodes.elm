@@ -13,12 +13,14 @@ encodeSerie {id_,
             mediaNota, 
             poster, 
             dataInicio, 
-            popularidade} = object [("idApi", int id_),
+            popularidade,
+            sinopse} = object [("idApi", int id_),
                             ("name", string nome),
                             ("vote_average", float mediaNota),
                             ("poster_path", string <| Maybe.withDefault "" poster),
                             ("first_air_date", string dataInicio),
-                            ("popularity", float popularidade)]
+                            ("popularity", float popularidade),
+                            ("overview", string sinopse)]
                             
 encodeUsuario : DadosUsuario -> Value
 encodeUsuario { 
@@ -29,7 +31,8 @@ encodeUsuario {
                             ("nome", string nome),
                             ("sobrenome", string sobrenome),
                             ("email", string email),
-                            ("senha", string senha)]
+                            ("senha", string senha),
+                            ("token", string "")]
                             
 encodeDadosUsuario : String -> String -> Value
 encodeDadosUsuario email senha = list [ string email, string senha ]
