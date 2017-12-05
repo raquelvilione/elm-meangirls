@@ -71,7 +71,6 @@ update msg model =
         RespostaLogin resp ->
             case resp of
                 Err x -> ({ model | mensagem = toString x}, Cmd.none)
-                -- Ok lista -> ({model | dados = lista}, Cmd.none)
                 Ok x -> ({ model | usuario = (\y -> {y | loginToken = x}) model.usuario, view = PagStock }, Cmd.none)
                 
         Login dadoslogin ->
