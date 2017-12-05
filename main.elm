@@ -26,8 +26,8 @@ init : Model
 init = Model
     (DadosUsuario "" "" "" "" "" "")
     (Stock 0 "" 0 Nothing "" 0 "")
-    [] [] "" "" []
-    (Populares 0 "" 0 Nothing "" 0 "")
+    [] [] "" "" [] []
+    (SerieAtual 0 "" 0 Nothing "" 0 "")
     (AiringToday 0 "" 0 Nothing "" 0 "")
     [Temporadas 0 0 "" "" 0]
     [Episodios 0 0 ""]
@@ -42,7 +42,7 @@ init = Model
 main =
   program 
     { 
-        init = (init, Cmd.batch [getPopulares, getAiringToday, getGeneros])
+        init = (init, getGeneros)
         , view = view
         , update = update
         , subscriptions = \_ -> Sub.none
