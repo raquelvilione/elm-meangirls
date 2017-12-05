@@ -20,7 +20,7 @@ type Msg
     | ConfirmarSenha String
     | RespostaCadastro (Result Http.Error (Http.Response String))
     | CadastrarUsuario DadosUsuario
-    | RespostaLogin (Result Http.Error Int)
+    | RespostaLogin (Result Http.Error String)
     | Login DadosUsuario
     | SubmitSearch
     | SymbolSearch String
@@ -43,8 +43,9 @@ type Msg
     | GeneroEscolhido String
     | Buscar
     | RespostaSG (Result Http.Error (List SeriesGenero))
-
-type Pagina = PagIndex | PagCadastro | PagValidation | PagLogin | PagStock | PagSerie | PagSerieGenero
+    | RespostaMinhaLista (Result Http.Error (List Stock))
+    
+type Pagina = PagIndex | PagSearch | PagCadastro | PagValidation | PagLogin | PagStock | PagSerie | PagSerieGenero | PagMinhaLista
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------
