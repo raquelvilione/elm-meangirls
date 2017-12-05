@@ -22,6 +22,7 @@ type alias Model =
     , mensagem : String
     , symbol : String
     , stocks : List Stock
+    , minhalista : List Stock
     , serieAtual : SerieAtual
     , airingtoday : AiringToday
     , temporadas : List Temporadas
