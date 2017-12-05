@@ -14,7 +14,9 @@ var _user$project$Model$Model = function (a) {
 													return function (n) {
 														return function (o) {
 															return function (p) {
-																return {usuario: a, pesqserie: b, seriespopulares: c, seriesairingtoday: d, mensagem: e, symbol: f, stocks: g, serieAtual: h, airingtoday: i, temporadas: j, episodios: k, generos: l, generoEscolhido: m, genero: n, seriesGenero: o, view: p};
+																return function (q) {
+																	return {usuario: a, pesqserie: b, seriespopulares: c, seriesairingtoday: d, mensagem: e, symbol: f, stocks: g, minhalista: h, serieAtual: i, airingtoday: j, temporadas: k, episodios: l, generos: m, generoEscolhido: n, genero: o, seriesGenero: p, view: q};
+																};
 															};
 														};
 													};

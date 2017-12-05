@@ -1,3 +1,12 @@
+var _user$project$Get$getMinhaLista = function (x) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Type$RespostaMinhaLista,
+		A2(
+			_elm_lang$http$Http$get,
+			A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io//serie/listar-todas/', x),
+			_user$project$Decodes$decodeStock));
+};
 var _user$project$Get$getSeriesGenero = function (s) {
 	return A2(
 		_elm_lang$http$Http$send,

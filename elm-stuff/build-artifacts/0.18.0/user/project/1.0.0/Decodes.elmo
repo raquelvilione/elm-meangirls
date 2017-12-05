@@ -72,15 +72,15 @@ var _user$project$Decodes$decodePopulares = A2(
 			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
 			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
 			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
-var _user$project$Decodes$decodeRespLogin = A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int);
+var _user$project$Decodes$decodeRespLogin = A2(_elm_lang$core$Json_Decode$field, 'resp', _elm_lang$core$Json_Decode$string);
 var _user$project$Decodes$decodeStock = A2(
 	_elm_lang$core$Json_Decode$field,
-	'results',
+	'resp',
 	_elm_lang$core$Json_Decode$list(
 		A8(
 			_elm_lang$core$Json_Decode$map7,
 			_user$project$Aliases$Stock,
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'idApi', _elm_lang$core$Json_Decode$int),
 			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
 			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
 			A2(

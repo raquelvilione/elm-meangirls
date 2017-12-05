@@ -1,3 +1,6 @@
+var _user$project$Type$RespostaMinhaLista = function (a) {
+	return {ctor: 'RespostaMinhaLista', _0: a};
+};
 var _user$project$Type$RespostaSG = function (a) {
 	return {ctor: 'RespostaSG', _0: a};
 };
@@ -85,10 +88,12 @@ var _user$project$Type$Sobrenome = function (a) {
 var _user$project$Type$Nome = function (a) {
 	return {ctor: 'Nome', _0: a};
 };
+var _user$project$Type$PagMinhaLista = {ctor: 'PagMinhaLista'};
 var _user$project$Type$PagSerieGenero = {ctor: 'PagSerieGenero'};
 var _user$project$Type$PagSerie = {ctor: 'PagSerie'};
 var _user$project$Type$PagStock = {ctor: 'PagStock'};
 var _user$project$Type$PagLogin = {ctor: 'PagLogin'};
 var _user$project$Type$PagValidation = {ctor: 'PagValidation'};
 var _user$project$Type$PagCadastro = {ctor: 'PagCadastro'};
+var _user$project$Type$PagSearch = {ctor: 'PagSearch'};
 var _user$project$Type$PagIndex = {ctor: 'PagIndex'};

@@ -4,7 +4,8 @@ var _user$project$Main$init = _user$project$Model$Model(
 	{ctor: '[]'})(
 	{ctor: '[]'})('')('')(
 	{ctor: '[]'})(
-	A7(_user$project$Aliases$Populares, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+	{ctor: '[]'})(
+	A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
 	A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
 	{
 		ctor: '::',
@@ -29,24 +30,7 @@ var _user$project$Main$init = _user$project$Model$Model(
 	})(_user$project$Type$PagIndex);
 var _user$project$Main$main = _elm_lang$html$Html$program(
 	{
-		init: {
-			ctor: '_Tuple2',
-			_0: _user$project$Main$init,
-			_1: _elm_lang$core$Platform_Cmd$batch(
-				{
-					ctor: '::',
-					_0: _user$project$Get$getPopulares,
-					_1: {
-						ctor: '::',
-						_0: _user$project$Get$getAiringToday,
-						_1: {
-							ctor: '::',
-							_0: _user$project$Get$getGeneros,
-							_1: {ctor: '[]'}
-						}
-					}
-				})
-		},
+		init: {ctor: '_Tuple2', _0: _user$project$Main$init, _1: _user$project$Get$getGeneros},
 		view: _user$project$View$view,
 		update: _user$project$Update$update,
 		subscriptions: function (_p0) {

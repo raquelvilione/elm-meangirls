@@ -150,7 +150,15 @@ var _user$project$Encodes$encodeUsuario = function (_p4) {
 							_0: 'senha',
 							_1: _elm_lang$core$Json_Encode$string(_p5.senha)
 						},
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'token',
+								_1: _elm_lang$core$Json_Encode$string('')
+							},
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -202,7 +210,15 @@ var _user$project$Encodes$encodeSerie = function (_p6) {
 									_0: 'popularity',
 									_1: _elm_lang$core$Json_Encode$float(_p7.popularidade)
 								},
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: {
+										ctor: '_Tuple2',
+										_0: 'overview',
+										_1: _elm_lang$core$Json_Encode$string(_p7.sinopse)
+									},
+									_1: {ctor: '[]'}
+								}
 							}
 						}
 					}

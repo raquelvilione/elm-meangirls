@@ -9170,191 +9170,53 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _user$project$Aliases$DadosUsuario = F6(
+var _user$project$Aliases$Stock = F6(
 	function (a, b, c, d, e, f) {
-		return {nome: a, sobrenome: b, email: c, senha: d, confirmarSenha: e, loginToken: f};
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f};
 	});
-var _user$project$Aliases$Stock = F7(
-	function (a, b, c, d, e, f, g) {
-		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
-	});
-var _user$project$Aliases$Populares = F7(
-	function (a, b, c, d, e, f, g) {
-		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
-	});
-var _user$project$Aliases$AiringToday = F7(
-	function (a, b, c, d, e, f, g) {
-		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
-	});
-var _user$project$Aliases$SerieAtual = F7(
-	function (a, b, c, d, e, f, g) {
-		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
-	});
-var _user$project$Aliases$Temporadas = F5(
+var _user$project$Aliases$DadosUsuario = F5(
 	function (a, b, c, d, e) {
-		return {id: a, episode_count: b, air_date: c, poster_path: d, season_number: e};
-	});
-var _user$project$Aliases$Episodios = F3(
-	function (a, b, c) {
-		return {id: a, episode_number: b, name: c};
-	});
-var _user$project$Aliases$Generos = F2(
-	function (a, b) {
-		return {id: a, nome: b};
-	});
-var _user$project$Aliases$SeriesGenero = F2(
-	function (a, b) {
-		return {nome: a, id: b};
+		return {nome: a, sobrenome: b, email: c, senha: d, confirmarSenha: e};
 	});
 
-var _user$project$Decodes$decodeSeriesGenero = A2(
-	_elm_lang$core$Json_Decode$field,
-	'results',
-	_elm_lang$core$Json_Decode$list(
-		A3(
-			_elm_lang$core$Json_Decode$map2,
-			_user$project$Aliases$SeriesGenero,
-			A2(_elm_lang$core$Json_Decode$field, 'original_name', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int))));
-var _user$project$Decodes$decodeGeneros = A2(
-	_elm_lang$core$Json_Decode$field,
-	'genres',
-	_elm_lang$core$Json_Decode$list(
-		A3(
-			_elm_lang$core$Json_Decode$map2,
-			_user$project$Aliases$Generos,
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string))));
-var _user$project$Decodes$decodeEpisodios = A2(
-	_elm_lang$core$Json_Decode$field,
-	'episodes',
-	_elm_lang$core$Json_Decode$list(
-		A4(
-			_elm_lang$core$Json_Decode$map3,
-			_user$project$Aliases$Episodios,
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'episode_number', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string))));
-var _user$project$Decodes$decodeTemporadas = A2(
-	_elm_lang$core$Json_Decode$field,
-	'seasons',
-	_elm_lang$core$Json_Decode$list(
-		A6(
-			_elm_lang$core$Json_Decode$map5,
-			_user$project$Aliases$Temporadas,
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'episode_count', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'air_date', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'poster_path', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'season_number', _elm_lang$core$Json_Decode$int))));
-var _user$project$Decodes$decodeAiringToday = A2(
-	_elm_lang$core$Json_Decode$field,
-	'results',
-	_elm_lang$core$Json_Decode$list(
-		A8(
-			_elm_lang$core$Json_Decode$map7,
-			_user$project$Aliases$AiringToday,
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
-			A2(
-				_elm_lang$core$Json_Decode$field,
-				'poster_path',
-				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
-			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
-			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
-var _user$project$Decodes$decodePopulares = A2(
-	_elm_lang$core$Json_Decode$field,
-	'results',
-	_elm_lang$core$Json_Decode$list(
-		A8(
-			_elm_lang$core$Json_Decode$map7,
-			_user$project$Aliases$Populares,
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
-			A2(
-				_elm_lang$core$Json_Decode$field,
-				'poster_path',
-				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
-			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
-			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
-var _user$project$Decodes$decodeRespLogin = A2(_elm_lang$core$Json_Decode$field, 'resp', _elm_lang$core$Json_Decode$string);
-var _user$project$Decodes$decodeStock = A2(
-	_elm_lang$core$Json_Decode$field,
-	'resp',
-	_elm_lang$core$Json_Decode$list(
-		A8(
-			_elm_lang$core$Json_Decode$map7,
-			_user$project$Aliases$Stock,
-			A2(_elm_lang$core$Json_Decode$field, 'idApi', _elm_lang$core$Json_Decode$int),
-			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
-			A2(
-				_elm_lang$core$Json_Decode$field,
-				'poster_path',
-				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
-			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
-			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
-
-var _user$project$Encodes$encodeAiringToday = function (_p0) {
+var _user$project$Encodes$encodeUsuario = function (_p0) {
 	var _p1 = _p0;
 	return _elm_lang$core$Json_Encode$object(
 		{
 			ctor: '::',
 			_0: {
 				ctor: '_Tuple2',
-				_0: 'idApi',
-				_1: _elm_lang$core$Json_Encode$int(_p1.id_)
+				_0: 'nome',
+				_1: _elm_lang$core$Json_Encode$string(_p1.nome)
 			},
 			_1: {
 				ctor: '::',
 				_0: {
 					ctor: '_Tuple2',
-					_0: 'name',
-					_1: _elm_lang$core$Json_Encode$string(_p1.nome)
+					_0: 'sobrenome',
+					_1: _elm_lang$core$Json_Encode$string(_p1.sobrenome)
 				},
 				_1: {
 					ctor: '::',
 					_0: {
 						ctor: '_Tuple2',
-						_0: 'vote_average',
-						_1: _elm_lang$core$Json_Encode$float(_p1.mediaNota)
+						_0: 'email',
+						_1: _elm_lang$core$Json_Encode$string(_p1.email)
 					},
 					_1: {
 						ctor: '::',
 						_0: {
 							ctor: '_Tuple2',
-							_0: 'poster_path',
-							_1: _elm_lang$core$Json_Encode$string(
-								A2(_elm_lang$core$Maybe$withDefault, '', _p1.poster))
+							_0: 'senha',
+							_1: _elm_lang$core$Json_Encode$string(_p1.senha)
 						},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'first_air_date',
-								_1: _elm_lang$core$Json_Encode$string(_p1.dataInicio)
-							},
-							_1: {
-								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: 'popularity',
-									_1: _elm_lang$core$Json_Encode$float(_p1.popularidade)
-								},
-								_1: {ctor: '[]'}
-							}
-						}
+						_1: {ctor: '[]'}
 					}
 				}
 			}
 		});
 };
-var _user$project$Encodes$encodePopulares = function (_p2) {
+var _user$project$Encodes$encodeSerie = function (_p2) {
 	var _p3 = _p2;
 	return _elm_lang$core$Json_Encode$object(
 		{
@@ -9408,2240 +9270,26 @@ var _user$project$Encodes$encodePopulares = function (_p2) {
 			}
 		});
 };
-var _user$project$Encodes$encodeDadosUsuario = F2(
-	function (email, senha) {
-		return _elm_lang$core$Json_Encode$list(
-			{
-				ctor: '::',
-				_0: _elm_lang$core$Json_Encode$string(email),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$core$Json_Encode$string(senha),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _user$project$Encodes$encodeUsuario = function (_p4) {
-	var _p5 = _p4;
-	return _elm_lang$core$Json_Encode$object(
-		{
-			ctor: '::',
-			_0: {
-				ctor: '_Tuple2',
-				_0: 'nome',
-				_1: _elm_lang$core$Json_Encode$string(_p5.nome)
-			},
-			_1: {
-				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'sobrenome',
-					_1: _elm_lang$core$Json_Encode$string(_p5.sobrenome)
-				},
-				_1: {
-					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'email',
-						_1: _elm_lang$core$Json_Encode$string(_p5.email)
-					},
-					_1: {
-						ctor: '::',
-						_0: {
-							ctor: '_Tuple2',
-							_0: 'senha',
-							_1: _elm_lang$core$Json_Encode$string(_p5.senha)
-						},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'token',
-								_1: _elm_lang$core$Json_Encode$string('')
-							},
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		});
-};
-var _user$project$Encodes$encodeSerie = function (_p6) {
-	var _p7 = _p6;
-	return _elm_lang$core$Json_Encode$object(
-		{
-			ctor: '::',
-			_0: {
-				ctor: '_Tuple2',
-				_0: 'idApi',
-				_1: _elm_lang$core$Json_Encode$int(_p7.id_)
-			},
-			_1: {
-				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'name',
-					_1: _elm_lang$core$Json_Encode$string(_p7.nome)
-				},
-				_1: {
-					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'vote_average',
-						_1: _elm_lang$core$Json_Encode$float(_p7.mediaNota)
-					},
-					_1: {
-						ctor: '::',
-						_0: {
-							ctor: '_Tuple2',
-							_0: 'poster_path',
-							_1: _elm_lang$core$Json_Encode$string(
-								A2(_elm_lang$core$Maybe$withDefault, '', _p7.poster))
-						},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'first_air_date',
-								_1: _elm_lang$core$Json_Encode$string(_p7.dataInicio)
-							},
-							_1: {
-								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: 'popularity',
-									_1: _elm_lang$core$Json_Encode$float(_p7.popularidade)
-								},
-								_1: {
-									ctor: '::',
-									_0: {
-										ctor: '_Tuple2',
-										_0: 'overview',
-										_1: _elm_lang$core$Json_Encode$string(_p7.sinopse)
-									},
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				}
-			}
-		});
-};
 
-var _user$project$Functions$mudaString = A3(
-	_elm_lang$core$Regex$replace,
-	_elm_lang$core$Regex$All,
-	_elm_lang$core$Regex$regex(' '),
-	function (_p0) {
-		return '%20';
-	});
-var _user$project$Functions$tiraAspas = function (palavra) {
-	return A2(
-		_elm_lang$core$String$filter,
-		function (x) {
-			return !_elm_lang$core$Native_Utils.eq(
-				x,
-				_elm_lang$core$Native_Utils.chr('\"'));
-		},
-		palavra);
-};
-
-var _user$project$Type$RespostaMinhaLista = function (a) {
-	return {ctor: 'RespostaMinhaLista', _0: a};
-};
-var _user$project$Type$RespostaSG = function (a) {
-	return {ctor: 'RespostaSG', _0: a};
-};
-var _user$project$Type$Buscar = {ctor: 'Buscar'};
-var _user$project$Type$GeneroEscolhido = function (a) {
-	return {ctor: 'GeneroEscolhido', _0: a};
-};
-var _user$project$Type$RespostaG = function (a) {
-	return {ctor: 'RespostaG', _0: a};
-};
-var _user$project$Type$RespostaEps = function (a) {
-	return {ctor: 'RespostaEps', _0: a};
-};
-var _user$project$Type$SubmitEpisodios = F2(
-	function (a, b) {
-		return {ctor: 'SubmitEpisodios', _0: a, _1: b};
-	});
-var _user$project$Type$RespostaTemp = function (a) {
-	return {ctor: 'RespostaTemp', _0: a};
-};
-var _user$project$Type$SubmitTemporada = function (a) {
-	return {ctor: 'SubmitTemporada', _0: a};
-};
-var _user$project$Type$VerSerie = function (a) {
-	return {ctor: 'VerSerie', _0: a};
-};
-var _user$project$Type$MudarPagina = function (a) {
-	return {ctor: 'MudarPagina', _0: a};
-};
-var _user$project$Type$ResCadSerieAiringToday = function (a) {
-	return {ctor: 'ResCadSerieAiringToday', _0: a};
-};
-var _user$project$Type$CadSerieAiringToday = function (a) {
-	return {ctor: 'CadSerieAiringToday', _0: a};
-};
-var _user$project$Type$RespostaAiringToday = function (a) {
-	return {ctor: 'RespostaAiringToday', _0: a};
-};
-var _user$project$Type$ResCadSeriesPopulares = function (a) {
-	return {ctor: 'ResCadSeriesPopulares', _0: a};
-};
-var _user$project$Type$CadSeriePopulares = function (a) {
-	return {ctor: 'CadSeriePopulares', _0: a};
-};
-var _user$project$Type$RespostaSeriesPopulares = function (a) {
-	return {ctor: 'RespostaSeriesPopulares', _0: a};
-};
-var _user$project$Type$ResCadastrarSerie = function (a) {
-	return {ctor: 'ResCadastrarSerie', _0: a};
-};
-var _user$project$Type$CadastrarSerie = function (a) {
-	return {ctor: 'CadastrarSerie', _0: a};
-};
-var _user$project$Type$RespostaSearch = function (a) {
-	return {ctor: 'RespostaSearch', _0: a};
-};
-var _user$project$Type$SymbolSearch = function (a) {
-	return {ctor: 'SymbolSearch', _0: a};
-};
-var _user$project$Type$SubmitSearch = {ctor: 'SubmitSearch'};
-var _user$project$Type$Login = function (a) {
-	return {ctor: 'Login', _0: a};
-};
-var _user$project$Type$RespostaLogin = function (a) {
-	return {ctor: 'RespostaLogin', _0: a};
-};
-var _user$project$Type$CadastrarUsuario = function (a) {
-	return {ctor: 'CadastrarUsuario', _0: a};
-};
-var _user$project$Type$RespostaCadastro = function (a) {
-	return {ctor: 'RespostaCadastro', _0: a};
-};
-var _user$project$Type$ConfirmarSenha = function (a) {
-	return {ctor: 'ConfirmarSenha', _0: a};
-};
-var _user$project$Type$Senha = function (a) {
-	return {ctor: 'Senha', _0: a};
-};
-var _user$project$Type$Email = function (a) {
-	return {ctor: 'Email', _0: a};
-};
-var _user$project$Type$Sobrenome = function (a) {
-	return {ctor: 'Sobrenome', _0: a};
-};
-var _user$project$Type$Nome = function (a) {
-	return {ctor: 'Nome', _0: a};
-};
-var _user$project$Type$PagMinhaLista = {ctor: 'PagMinhaLista'};
-var _user$project$Type$PagSerieGenero = {ctor: 'PagSerieGenero'};
-var _user$project$Type$PagSerie = {ctor: 'PagSerie'};
-var _user$project$Type$PagStock = {ctor: 'PagStock'};
-var _user$project$Type$PagLogin = {ctor: 'PagLogin'};
-var _user$project$Type$PagValidation = {ctor: 'PagValidation'};
-var _user$project$Type$PagCadastro = {ctor: 'PagCadastro'};
-var _user$project$Type$PagSearch = {ctor: 'PagSearch'};
-var _user$project$Type$PagIndex = {ctor: 'PagIndex'};
-
-var _user$project$Get$getMinhaLista = function (x) {
-	return A2(
-		_elm_lang$http$Http$send,
-		_user$project$Type$RespostaMinhaLista,
-		A2(
-			_elm_lang$http$Http$get,
-			A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io//serie/listar-todas/', x),
-			_user$project$Decodes$decodeStock));
-};
-var _user$project$Get$getSeriesGenero = function (s) {
-	return A2(
-		_elm_lang$http$Http$send,
-		_user$project$Type$RespostaSG,
-		A2(
-			_elm_lang$http$Http$get,
+var _user$project$Decodes$decodeStock = A2(
+	_elm_lang$core$Json_Decode$field,
+	'results',
+	_elm_lang$core$Json_Decode$list(
+		A7(
+			_elm_lang$core$Json_Decode$map6,
+			_user$project$Aliases$Stock,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
 			A2(
-				_elm_lang$core$Basics_ops['++'],
-				'https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=',
-				A2(_elm_lang$core$Basics_ops['++'], s, '&include_null_first_air_dates=false')),
-			_user$project$Decodes$decodeSeriesGenero));
-};
-var _user$project$Get$getGeneros = A2(
-	_elm_lang$http$Http$send,
-	_user$project$Type$RespostaG,
-	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/genre/tv/list?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR', _user$project$Decodes$decodeGeneros));
-var _user$project$Get$getEpisodios = function (_p0) {
-	var _p1 = _p0;
-	return A2(
-		_elm_lang$http$Http$send,
-		_user$project$Type$RespostaEps,
-		A2(
-			_elm_lang$http$Http$get,
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				'https://api.themoviedb.org/3/tv/',
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_p1._0,
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						'/season/',
-						A2(_elm_lang$core$Basics_ops['++'], _p1._1, '?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR')))),
-			_user$project$Decodes$decodeEpisodios));
-};
-var _user$project$Get$getTemporadas = function (valor) {
-	return A2(
-		_elm_lang$http$Http$send,
-		_user$project$Type$RespostaTemp,
-		A2(
-			_elm_lang$http$Http$get,
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				'https://api.themoviedb.org/3/tv/',
-				A2(_elm_lang$core$Basics_ops['++'], valor, '?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=en-US')),
-			_user$project$Decodes$decodeTemporadas));
-};
-var _user$project$Get$getAiringToday = A2(
-	_elm_lang$http$Http$send,
-	_user$project$Type$RespostaAiringToday,
-	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/tv/airing_today?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR', _user$project$Decodes$decodePopulares));
-var _user$project$Get$getPopulares = A2(
-	_elm_lang$http$Http$send,
-	_user$project$Type$RespostaSeriesPopulares,
-	A2(_elm_lang$http$Http$get, 'https://api.themoviedb.org/3/tv/popular?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR', _user$project$Decodes$decodePopulares));
-var _user$project$Get$getStocks = function (symb) {
-	return A2(
-		_elm_lang$http$Http$send,
-		_user$project$Type$RespostaSearch,
-		A2(
-			_elm_lang$http$Http$get,
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				'https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&query=',
-				_user$project$Functions$mudaString(symb)),
-			_user$project$Decodes$decodeStock));
-};
+				_elm_lang$core$Json_Decode$field,
+				'poster_path',
+				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
+			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float))));
 
-var _user$project$Model$Model = function (a) {
-	return function (b) {
-		return function (c) {
-			return function (d) {
-				return function (e) {
-					return function (f) {
-						return function (g) {
-							return function (h) {
-								return function (i) {
-									return function (j) {
-										return function (k) {
-											return function (l) {
-												return function (m) {
-													return function (n) {
-														return function (o) {
-															return function (p) {
-																return function (q) {
-																	return {usuario: a, pesqserie: b, seriespopulares: c, seriesairingtoday: d, mensagem: e, symbol: f, stocks: g, minhalista: h, serieAtual: i, airingtoday: j, temporadas: k, episodios: l, generos: m, generoEscolhido: n, genero: o, seriesGenero: p, view: q};
-																};
-															};
-														};
-													};
-												};
-											};
-										};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
-};
-
-var _user$project$Portas$carousel = _elm_lang$core$Native_Platform.outgoingPort(
-	'carousel',
-	function (v) {
-		return v;
-	});
-
-var _user$project$Post$postWhole = F3(
-	function (url, body, decoder) {
-		return _elm_lang$http$Http$request(
-			{
-				method: 'POST',
-				headers: {ctor: '[]'},
-				url: url,
-				body: body,
-				expect: _elm_lang$http$Http$expectStringResponse(
-					function (x) {
-						return _elm_lang$core$Result$Ok(x);
-					}),
-				timeout: _elm_lang$core$Maybe$Nothing,
-				withCredentials: false
-			});
-	});
-
-var _user$project$Update$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'MudarPagina':
-				switch (_p0._0.ctor) {
-					case 'PagLogin':
-						return {
-							ctor: '_Tuple2',
-							_0: _user$project$Model$Model(
-								A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
-								A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								{ctor: '[]'})(
-								{ctor: '[]'})('')('')(
-								{ctor: '[]'})(
-								{ctor: '[]'})(
-								A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								{
-									ctor: '::',
-									_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
-									_1: {ctor: '[]'}
-								})(
-								{
-									ctor: '::',
-									_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
-									_1: {ctor: '[]'}
-								})(
-								{
-									ctor: '::',
-									_0: A2(_user$project$Aliases$Generos, 0, ''),
-									_1: {ctor: '[]'}
-								})('')(
-								A2(_user$project$Aliases$SeriesGenero, '', 0))(
-								{
-									ctor: '::',
-									_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
-									_1: {ctor: '[]'}
-								})(_user$project$Type$PagLogin),
-							_1: _elm_lang$core$Platform_Cmd$batch(
-								{
-									ctor: '::',
-									_0: _user$project$Get$getPopulares,
-									_1: {
-										ctor: '::',
-										_0: _user$project$Get$getAiringToday,
-										_1: {
-											ctor: '::',
-											_0: _user$project$Get$getGeneros,
-											_1: {ctor: '[]'}
-										}
-									}
-								})
-						};
-					case 'PagMinhaLista':
-						return {
-							ctor: '_Tuple2',
-							_0: _elm_lang$core$Native_Utils.update(
-								model,
-								{view: _user$project$Type$PagMinhaLista}),
-							_1: _user$project$Get$getMinhaLista(model.usuario.loginToken)
-						};
-					default:
-						return {
-							ctor: '_Tuple2',
-							_0: _elm_lang$core$Native_Utils.update(
-								model,
-								{view: _p0._0}),
-							_1: _elm_lang$core$Platform_Cmd$none
-						};
-				}
-			case 'Nome':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							usuario: function (y) {
-								return _elm_lang$core$Native_Utils.update(
-									y,
-									{nome: _p0._0});
-							}(model.usuario)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Sobrenome':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							usuario: function (y) {
-								return _elm_lang$core$Native_Utils.update(
-									y,
-									{sobrenome: _p0._0});
-							}(model.usuario)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Email':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							usuario: function (y) {
-								return _elm_lang$core$Native_Utils.update(
-									y,
-									{email: _p0._0});
-							}(model.usuario)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Senha':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							usuario: function (y) {
-								return _elm_lang$core$Native_Utils.update(
-									y,
-									{senha: _p0._0});
-							}(model.usuario)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'ConfirmarSenha':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							usuario: function (y) {
-								return _elm_lang$core$Native_Utils.update(
-									y,
-									{confirmarSenha: _p0._0});
-							}(model.usuario)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'RespostaCadastro':
-				var _p1 = _p0._0;
-				if (_p1.ctor === 'Err') {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								view: _elm_lang$core$Native_Utils.eq(_p1._0.status.code, 201) ? _user$project$Type$PagLogin : _user$project$Type$PagCadastro
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'CadastrarUsuario':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(
-						_elm_lang$http$Http$send,
-						_user$project$Type$RespostaCadastro,
-						A3(
-							_user$project$Post$postWhole,
-							'https://meangirls-raquelvilione.c9users.io/usuario/inserir',
-							_elm_lang$http$Http$jsonBody(
-								_user$project$Encodes$encodeUsuario(_p0._0)),
-							_elm_lang$core$Json_Decode$int))
-				};
-			case 'RespostaLogin':
-				var _p2 = _p0._0;
-				if (_p2.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p2._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								usuario: function (y) {
-									return _elm_lang$core$Native_Utils.update(
-										y,
-										{loginToken: _p2._0});
-								}(model.usuario),
-								view: _user$project$Type$PagStock
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'Login':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(
-						_elm_lang$http$Http$send,
-						_user$project$Type$RespostaLogin,
-						A3(
-							_elm_lang$http$Http$post,
-							'https://meangirls-raquelvilione.c9users.io/login/',
-							_elm_lang$http$Http$jsonBody(
-								A2(_user$project$Encodes$encodeDadosUsuario, model.usuario.email, model.usuario.senha)),
-							_user$project$Decodes$decodeRespLogin))
-				};
-			case 'SymbolSearch':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{symbol: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'SubmitSearch':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{view: _user$project$Type$PagSearch}),
-					_1: _user$project$Get$getStocks(model.symbol)
-				};
-			case 'RespostaSearch':
-				var _p3 = _p0._0;
-				if (_p3.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								symbol: _elm_lang$core$Basics$toString(_p3._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{stocks: _p3._0}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'CadastrarSerie':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(
-						_elm_lang$http$Http$send,
-						_user$project$Type$ResCadastrarSerie,
-						A3(
-							_elm_lang$http$Http$post,
-							A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io/serie/inserir/', model.usuario.loginToken),
-							_elm_lang$http$Http$jsonBody(
-								_user$project$Encodes$encodeSerie(_p0._0)),
-							_elm_lang$core$Json_Decode$int))
-				};
-			case 'ResCadastrarSerie':
-				var _p4 = _p0._0;
-				if (_p4.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								symbol: _elm_lang$core$Basics$toString(_p4._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								symbol: _elm_lang$core$Basics$toString(_p4._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'RespostaSeriesPopulares':
-				var _p5 = _p0._0;
-				if (_p5.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p5._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{seriespopulares: _p5._0, mensagem: 'ok'}),
-						_1: _user$project$Portas$carousel('')
-					};
-				}
-			case 'CadSeriePopulares':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(
-						_elm_lang$http$Http$send,
-						_user$project$Type$ResCadSeriesPopulares,
-						A3(
-							_elm_lang$http$Http$post,
-							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
-							_elm_lang$http$Http$jsonBody(
-								_user$project$Encodes$encodePopulares(_p0._0)),
-							_elm_lang$core$Json_Decode$int))
-				};
-			case 'ResCadSeriesPopulares':
-				var _p6 = _p0._0;
-				if (_p6.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p6._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				}
-			case 'RespostaAiringToday':
-				var _p7 = _p0._0;
-				if (_p7.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p7._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{seriesairingtoday: _p7._0, mensagem: 'ok'}),
-						_1: _user$project$Portas$carousel('')
-					};
-				}
-			case 'CadSerieAiringToday':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(
-						_elm_lang$http$Http$send,
-						_user$project$Type$ResCadSerieAiringToday,
-						A3(
-							_elm_lang$http$Http$post,
-							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
-							_elm_lang$http$Http$jsonBody(
-								_user$project$Encodes$encodeAiringToday(_p0._0)),
-							_elm_lang$core$Json_Decode$int))
-				};
-			case 'ResCadSerieAiringToday':
-				var _p8 = _p0._0;
-				if (_p8.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p8._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				}
-			case 'VerSerie':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{serieAtual: _p0._0, view: _user$project$Type$PagSerie}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'SubmitTemporada':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: _user$project$Get$getTemporadas(
-						_elm_lang$core$Basics$toString(_p0._0))
-				};
-			case 'RespostaTemp':
-				var _p9 = _p0._0;
-				if (_p9.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{mensagem: 'hioyioshjdf'}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{temporadas: _p9._0}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'SubmitEpisodios':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: _user$project$Get$getEpisodios(
-						{
-							ctor: '_Tuple2',
-							_0: _elm_lang$core$Basics$toString(_p0._0),
-							_1: _elm_lang$core$Basics$toString(_p0._1)
-						})
-				};
-			case 'RespostaEps':
-				var _p10 = _p0._0;
-				if (_p10.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{mensagem: 'hioyioshjdf'}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{episodios: _p10._0}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'RespostaG':
-				var _p11 = _p0._0;
-				if (_p11.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p11._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{generos: _p11._0, mensagem: 'ok'}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'GeneroEscolhido':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{generoEscolhido: _p0._0}),
-					_1: _user$project$Get$getSeriesGenero(model.generoEscolhido)
-				};
-			case 'Buscar':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: _user$project$Get$getSeriesGenero(model.generoEscolhido)
-				};
-			case 'RespostaSG':
-				var _p12 = _p0._0;
-				if (_p12.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p12._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{seriesGenero: _p12._0, mensagem: 'blz', view: _user$project$Type$PagSerieGenero}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			default:
-				var _p13 = _p0._0;
-				if (_p13.ctor === 'Err') {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{
-								mensagem: _elm_lang$core$Basics$toString(_p13._0)
-							}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{minhalista: _p13._0, mensagem: 'blz'}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-		}
-	});
-
-var _user$project$View$viewSeriesG = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-block'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$h5,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(
-												_user$project$Functions$tiraAspas(
-													_elm_lang$core$Basics$toString(model.nome))),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('tutor-designation'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													_elm_lang$core$Basics$toString(model.id)),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewSeriesGenero = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		A2(_elm_lang$core$List$map, _user$project$View$viewSeriesG, model.seriesGenero));
-};
-var _user$project$View$viewGeneros = function (genero) {
-	return A2(
-		_elm_lang$html$Html$option,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$value(
-				_elm_lang$core$Basics$toString(genero.id)),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(genero.nome),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewAiringToday = function (airingtodayy) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('item'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block project wow animated animated4 fadeInLeft'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$img,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'http://image.tmdb.org/t/p/w185/',
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(
-													A2(_elm_lang$core$Maybe$withDefault, '', airingtodayy.poster))))),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('project-hover'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$h1,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('title-item-carousel'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													_user$project$Functions$tiraAspas(
-														_elm_lang$core$Basics$toString(airingtodayy.nome))),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$hr,
-												{ctor: '[]'},
-												{ctor: '[]'}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$button,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('ver-mais'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(
-																_user$project$Type$VerSerie(airingtodayy)),
-															_1: {ctor: '[]'}
-														}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('visualizar'),
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											}
-										}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewAiringToday2 = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('espac'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('container'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$h1,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('title-tvbox'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('NO AR HOJE'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$id('owl-airingtoday'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('owl-carousel owl-theme'),
-							_1: {ctor: '[]'}
-						}
-					},
-					A2(_elm_lang$core$List$map, _user$project$View$viewAiringToday, model.seriesairingtoday)),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$View$viewEpisodios = function (idE) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('episodio'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					'Episódio ',
-					_user$project$Functions$tiraAspas(
-						_elm_lang$core$Basics$toString(idE)))),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewTemporada = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('row temporada'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('col-lg-3 col-md-3 col-sm-3 col-xs-12'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$img,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$src(
-									A2(
-										_elm_lang$core$Basics_ops['++'],
-										'http://image.tmdb.org/t/p/w185/',
-										_user$project$Functions$tiraAspas(
-											_elm_lang$core$Basics$toString(model.poster_path)))),
-								_1: {ctor: '[]'}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('col-lg-9 col-md-9 col-sm-9 col-xs-12'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$h1,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(
-									A2(
-										_elm_lang$core$Basics_ops['++'],
-										'TEMPORADA ',
-										_user$project$Functions$tiraAspas(
-											_elm_lang$core$Basics$toString(model.season_number)))),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'Número de episódios: ',
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(model.episode_count)))),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{ctor: '[]'},
-									A2(
-										_elm_lang$core$List$map,
-										_user$project$View$viewEpisodios,
-										A2(_elm_lang$core$List$range, 1, model.episode_count))),
-								_1: {ctor: '[]'}
-							}
-						}
-					}),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$View$viewSerie = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$id('mostra-serie'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('container'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('col-lg-3 col-md-3 col-sm-3 col-xs-12'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$img,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$src(
-															A2(
-																_elm_lang$core$Basics_ops['++'],
-																'http://image.tmdb.org/t/p/w185/',
-																_user$project$Functions$tiraAspas(
-																	_elm_lang$core$Basics$toString(
-																		A2(_elm_lang$core$Maybe$withDefault, '', model.serieAtual.poster))))),
-														_1: {ctor: '[]'}
-													}
-												},
-												{ctor: '[]'}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('col-lg-9 col-md-9 col-sm-9 col-xs-12'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('col-lg-12'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$h5,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text(
-															_user$project$Functions$tiraAspas(
-																_elm_lang$core$Basics$toString(model.serieAtual.nome))),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$div,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$id('rate'),
-															_1: {ctor: '[]'}
-														},
-														{
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$img,
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$src('/imagens/favorite.png'),
-																		_1: {ctor: '[]'}
-																	}
-																},
-																{ctor: '[]'}),
-															_1: {
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$span,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$class('tutor-designation'),
-																		_1: {ctor: '[]'}
-																	},
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html$text(
-																			_elm_lang$core$Basics$toString(model.serieAtual.mediaNota)),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {ctor: '[]'}
-															}
-														}),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('col-lg-12 sinopse'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$p,
-														{ctor: '[]'},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(
-																_user$project$Functions$tiraAspas(
-																	_elm_lang$core$Basics$toString(model.serieAtual.sinopse))),
-															_1: {ctor: '[]'}
-														}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$div,
-															{ctor: '[]'},
-															{
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$button,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Events$onClick(
-																			_user$project$Type$CadastrarSerie(model.serieAtual)),
-																		_1: {ctor: '[]'}
-																	},
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html$text('Adicionar a minha lista'),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('page-scroll text-center'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$h1,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text('Visualizar Temporadas'),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$a,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$href('#temporadas'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('btn btn-circle'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Events$onClick(
-												_user$project$Type$SubmitTemporada(model.serieAtual.id_)),
-											_1: {ctor: '[]'}
-										}
-									}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$i,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('fa fa-angle-down fa-2x animated'),
-											_1: {ctor: '[]'}
-										},
-										{ctor: '[]'}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$id('temporadas'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('container'),
-								_1: {ctor: '[]'}
-							}
-						},
-						A2(_elm_lang$core$List$map, _user$project$View$viewTemporada, model.temporadas)),
-					_1: {ctor: '[]'}
-				}
-			}
-		});
-};
-var _user$project$View$viewPopulares = function (popular) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('item'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block project wow animated animated4 fadeInLeft'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$img,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'http://image.tmdb.org/t/p/w185/',
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(
-													A2(_elm_lang$core$Maybe$withDefault, '', popular.poster))))),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('project-hover'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$h1,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('title-item-carousel'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													_user$project$Functions$tiraAspas(
-														_elm_lang$core$Basics$toString(popular.nome))),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$hr,
-												{ctor: '[]'},
-												{ctor: '[]'}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$p,
-													{ctor: '[]'},
-													{ctor: '[]'}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$button,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('ver-mais'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Type$VerSerie(popular)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('visualizar'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewPopulares2 = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('espac'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('container'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$h1,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('title-tvbox'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('AS MAIS POPULARES'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$id('owl-populares'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('owl-carousel owl-theme'),
-							_1: {ctor: '[]'}
-						}
-					},
-					A2(_elm_lang$core$List$map, _user$project$View$viewPopulares, model.seriespopulares)),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$View$viewSearch = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('container'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$form,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('form-search'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onSubmit(_user$project$Type$SubmitSearch),
-								_1: {ctor: '[]'}
-							}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('input-group'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$input,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('input-custom'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$type_('text'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$required(true),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$placeholder('Pesquisar'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$SymbolSearch),
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}
-										},
-										{ctor: '[]'}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('input-group-btn'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$button,
-													{ctor: '[]'},
-													{
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$i,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('fa fa-search'),
-																_1: {ctor: '[]'}
-															},
-															{ctor: '[]'}),
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewMinhaLista = function (stock) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block resultados'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$img,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'http://image.tmdb.org/t/p/w185/',
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(
-													A2(_elm_lang$core$Maybe$withDefault, '', stock.poster))))),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$h5,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(stock.nome))),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$a,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$href('#'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$button,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('btn-ver'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Type$VerSerie(stock)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('Visualizar'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
-							}),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewMinhaLista2 = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('espac'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('container'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$h1,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('title-tvbox'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('MINHA LISTA'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
-					A2(_elm_lang$core$List$map, _user$project$View$viewMinhaLista, model.minhalista)),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$View$viewStock = function (stock) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block resultados'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$img,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'http://image.tmdb.org/t/p/w185/',
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(
-													A2(_elm_lang$core$Maybe$withDefault, '', stock.poster))))),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$h5,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(stock.nome))),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$a,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$href('#'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$button,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('btn-ver'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Type$VerSerie(stock)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('Visualizar'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
-							}),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewStock2 = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('espac'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('container'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$h1,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('title-tvbox'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('SÉRIES'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
-					A2(_elm_lang$core$List$map, _user$project$View$viewStock, model.stocks)),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$View$viewLogin = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('container align'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$h1,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('title-tvbox text-center'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('tvbox'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$form,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('col-md-4 col-md-offset-4 col-xs-12'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onSubmit(
-								_user$project$Type$Login(model.usuario)),
-							_1: {ctor: '[]'}
-						}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$input,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$type_('text'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$required(true),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$value(model.usuario.email),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$placeholder('Email'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$Email),
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}
-								}
-							},
-							{ctor: '[]'}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$input,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$type_('password'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$required(true),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$value(model.usuario.senha),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$placeholder('Senha'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$Senha),
-														_1: {ctor: '[]'}
-													}
-												}
-											}
-										}
-									}
-								},
-								{ctor: '[]'}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$button,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('btn-padrao'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('Login'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}
-					}),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$View$viewValidation = function (model) {
-	var _p0 = _elm_lang$core$Native_Utils.eq(model.usuario.senha, model.usuario.confirmarSenha) ? {ctor: '_Tuple2', _0: 'green', _1: ''} : {ctor: '_Tuple2', _0: 'white', _1: 'As senhas são diferentes!'};
+var _user$project$CadastroUsuario$viewValidation = function (model) {
+	var _p0 = _elm_lang$core$Native_Utils.eq(model.senha, model.confirmarSenha) ? {ctor: '_Tuple2', _0: 'green', _1: ''} : {ctor: '_Tuple2', _0: 'white', _1: 'As senhas são diferentes!'};
 	var color = _p0._0;
 	var message = _p0._1;
 	return A2(
@@ -11670,38 +9318,174 @@ var _user$project$View$viewValidation = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$View$viewCadastro = function (model) {
+var _user$project$CadastroUsuario$Model = F5(
+	function (a, b, c, d, e) {
+		return {nome: a, sobrenome: b, email: c, senha: d, confirmarSenha: e};
+	});
+var _user$project$CadastroUsuario$init = A5(_user$project$CadastroUsuario$Model, '', '', '', '', '');
+var _user$project$CadastroUsuario$CadastrarUsuario = function (a) {
+	return {ctor: 'CadastrarUsuario', _0: a};
+};
+var _user$project$CadastroUsuario$Resposta = function (a) {
+	return {ctor: 'Resposta', _0: a};
+};
+var _user$project$CadastroUsuario$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Nome':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{nome: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Sobrenome':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{sobrenome: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Email':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{email: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Senha':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{senha: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'ConfirmarSenha':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{confirmarSenha: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Resposta':
+				var _p2 = _p1._0;
+				if (_p2.ctor === 'Err') {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$http$Http$send,
+						_user$project$CadastroUsuario$Resposta,
+						A3(
+							_elm_lang$http$Http$post,
+							'https://meangirls-raquelvilione.c9users.io/usuario/inserir',
+							_elm_lang$http$Http$jsonBody(
+								_user$project$Encodes$encodeUsuario(_p1._0)),
+							_elm_lang$core$Json_Decode$int))
+				};
+		}
+	});
+var _user$project$CadastroUsuario$ConfirmarSenha = function (a) {
+	return {ctor: 'ConfirmarSenha', _0: a};
+};
+var _user$project$CadastroUsuario$Senha = function (a) {
+	return {ctor: 'Senha', _0: a};
+};
+var _user$project$CadastroUsuario$Email = function (a) {
+	return {ctor: 'Email', _0: a};
+};
+var _user$project$CadastroUsuario$Sobrenome = function (a) {
+	return {ctor: 'Sobrenome', _0: a};
+};
+var _user$project$CadastroUsuario$Nome = function (a) {
+	return {ctor: 'Nome', _0: a};
+};
+var _user$project$CadastroUsuario$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('container align'),
+			_0: _elm_lang$html$Html_Attributes$class('col-md-4 col-md-offset-4 col-xs-12'),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$h1,
+				_elm_lang$html$Html$input,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('title-tvbox text-center'),
-					_1: {ctor: '[]'}
+					_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$type_('text'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$placeholder('Nome'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$CadastroUsuario$Nome),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
 				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('cadastro'),
-					_1: {ctor: '[]'}
-				}),
+				{ctor: '[]'}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$div,
+					_elm_lang$html$Html$input,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('col-md-4 col-md-offset-4 col-xs-12'),
-						_1: {ctor: '[]'}
+						_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$type_('text'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('Sobrenome'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$CadastroUsuario$Sobrenome),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
 					},
-					{
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$input,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$type_('text'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder('Email'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$CadastroUsuario$Email),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$input,
@@ -11710,18 +9494,14 @@ var _user$project$View$viewCadastro = function (model) {
 								_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$type_('text'),
+									_0: _elm_lang$html$Html_Attributes$type_('password'),
 									_1: {
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$required(true),
+										_0: _elm_lang$html$Html_Attributes$placeholder('Senha'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$placeholder('Nome'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$Nome),
-												_1: {ctor: '[]'}
-											}
+											_0: _elm_lang$html$Html_Events$onInput(_user$project$CadastroUsuario$Senha),
+											_1: {ctor: '[]'}
 										}
 									}
 								}
@@ -11736,18 +9516,14 @@ var _user$project$View$viewCadastro = function (model) {
 									_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
 									_1: {
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$type_('text'),
+										_0: _elm_lang$html$Html_Attributes$type_('password'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$required(true),
+											_0: _elm_lang$html$Html_Attributes$placeholder('Confirme sua senha'),
 											_1: {
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$placeholder('Sobrenome'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$Sobrenome),
-													_1: {ctor: '[]'}
-												}
+												_0: _elm_lang$html$Html_Events$onInput(_user$project$CadastroUsuario$ConfirmarSenha),
+												_1: {ctor: '[]'}
 											}
 										}
 									}
@@ -11756,529 +9532,40 @@ var _user$project$View$viewCadastro = function (model) {
 							_1: {
 								ctor: '::',
 								_0: A2(
-									_elm_lang$html$Html$input,
+									_elm_lang$html$Html$button,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
+										_0: _elm_lang$html$Html_Attributes$class('btn-padrao'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$type_('text'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$required(true),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$placeholder('Email'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$Email),
-														_1: {ctor: '[]'}
-													}
-												}
-											}
+											_0: _elm_lang$html$Html_Events$onClick(
+												_user$project$CadastroUsuario$CadastrarUsuario(model)),
+											_1: {ctor: '[]'}
 										}
 									},
-									{ctor: '[]'}),
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Cadastrar'),
+										_1: {ctor: '[]'}
+									}),
 								_1: {
 									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$input,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$type_('password'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$required(true),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$placeholder('Senha'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$Senha),
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}
-										},
-										{ctor: '[]'}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$input,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('input-custom-register'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$type_('password'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$required(true),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$placeholder('Confirme sua senha'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$ConfirmarSenha),
-																_1: {ctor: '[]'}
-															}
-														}
-													}
-												}
-											},
-											{ctor: '[]'}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$button,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('btn-padrao'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onClick(
-															_user$project$Type$CadastrarUsuario(model.usuario)),
-														_1: {ctor: '[]'}
-													}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('Cadastrar'),
-													_1: {ctor: '[]'}
-												}),
-											_1: {
-												ctor: '::',
-												_0: _user$project$View$viewValidation(model),
-												_1: {ctor: '[]'}
-											}
-										}
-									}
+									_0: _user$project$CadastroUsuario$viewValidation(model),
+									_1: {ctor: '[]'}
 								}
 							}
 						}
-					}),
-				_1: {ctor: '[]'}
+					}
+				}
 			}
 		});
 };
-var _user$project$View$viewIndex = function (model) {
-	return A2(
-		_elm_lang$html$Html$span,
-		{ctor: '[]'},
-		{ctor: '[]'});
-};
-var _user$project$View$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$header,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$id('header'),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('headroom'),
-						_1: {ctor: '[]'}
-					}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('navbar navbar-fixed-top navbar-inverse'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('container-fluid'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('navbar-header'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$button,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('navbar-toggle'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$type_('button'),
-														_1: {ctor: '[]'}
-													}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$span,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('icon-bar'),
-															_1: {ctor: '[]'}
-														},
-														{ctor: '[]'}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$span,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('icon-bar'),
-																_1: {ctor: '[]'}
-															},
-															{ctor: '[]'}),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$span,
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$class('icon-bar'),
-																	_1: {ctor: '[]'}
-																},
-																{ctor: '[]'}),
-															_1: {ctor: '[]'}
-														}
-													}
-												}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$a,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('navbar-brand title-tvbox'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$href('#'),
-															_1: {ctor: '[]'}
-														}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('tvbox'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(model.mensagem),
-															_1: {ctor: '[]'}
-														}
-													}),
-												_1: {ctor: '[]'}
-											}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('collapse navbar-collapse'),
-												_1: {ctor: '[]'}
-											},
-											(!_elm_lang$core$Native_Utils.eq(model.usuario.loginToken, '')) ? {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$ul,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('nav navbar-nav navbar-right'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: _user$project$View$viewSearch(model),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$li,
-																{ctor: '[]'},
-																{
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$a,
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Attributes$href('#'),
-																			_1: {
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Events$onClick(
-																					_user$project$Type$MudarPagina(_user$project$Type$PagStock)),
-																				_1: {ctor: '[]'}
-																			}
-																		},
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('Home'),
-																			_1: {ctor: '[]'}
-																		}),
-																	_1: {ctor: '[]'}
-																}),
-															_1: {
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$li,
-																	{ctor: '[]'},
-																	{
-																		ctor: '::',
-																		_0: A2(
-																			_elm_lang$html$Html$a,
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Attributes$href('#'),
-																				_1: {
-																					ctor: '::',
-																					_0: _elm_lang$html$Html_Events$onClick(
-																						_user$project$Type$MudarPagina(_user$project$Type$PagMinhaLista)),
-																					_1: {ctor: '[]'}
-																				}
-																			},
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html$text('Minha Lista'),
-																				_1: {ctor: '[]'}
-																			}),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$li,
-																		{ctor: '[]'},
-																		{
-																			ctor: '::',
-																			_0: A2(
-																				_elm_lang$html$Html$a,
-																				{
-																					ctor: '::',
-																					_0: _elm_lang$html$Html_Attributes$href('#'),
-																					_1: {
-																						ctor: '::',
-																						_0: _elm_lang$html$Html_Events$onClick(
-																							_user$project$Type$MudarPagina(_user$project$Type$PagLogin)),
-																						_1: {ctor: '[]'}
-																					}
-																				},
-																				{
-																					ctor: '::',
-																					_0: _elm_lang$html$Html$text('Sair'),
-																					_1: {ctor: '[]'}
-																				}),
-																			_1: {ctor: '[]'}
-																		}),
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$div,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$id('genres-select'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('navbar-form navbar-right'),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$div,
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$class('form-group'),
-																	_1: {ctor: '[]'}
-																},
-																{
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$select,
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Events$onInput(_user$project$Type$GeneroEscolhido),
-																			_1: {ctor: '[]'}
-																		},
-																		A2(_elm_lang$core$List$map, _user$project$View$viewGeneros, model.generos)),
-																	_1: {ctor: '[]'}
-																}),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}
-											} : {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$ul,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('nav navbar-nav navbar-right'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$li,
-															{ctor: '[]'},
-															{
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$a,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$href('#'),
-																		_1: {
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Events$onClick(
-																				_user$project$Type$MudarPagina(_user$project$Type$PagLogin)),
-																			_1: {ctor: '[]'}
-																		}
-																	},
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html$text('Login'),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {ctor: '[]'}
-															}),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$li,
-																{ctor: '[]'},
-																{
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$a,
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Attributes$href('#'),
-																			_1: {
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Events$onClick(
-																					_user$project$Type$MudarPagina(_user$project$Type$PagCadastro)),
-																				_1: {ctor: '[]'}
-																			}
-																		},
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('Cadastro'),
-																			_1: {ctor: '[]'}
-																		}),
-																	_1: {ctor: '[]'}
-																}),
-															_1: {ctor: '[]'}
-														}
-													}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: function () {
-					var _p1 = model.view;
-					switch (_p1.ctor) {
-						case 'PagCadastro':
-							return _user$project$View$viewCadastro(model);
-						case 'PagValidation':
-							return _user$project$View$viewValidation(model);
-						case 'PagLogin':
-							return _user$project$View$viewLogin(model);
-						case 'PagSearch':
-							return _user$project$View$viewStock2(model);
-						case 'PagStock':
-							return A2(
-								_elm_lang$html$Html$div,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: _user$project$View$viewPopulares2(model),
-									_1: {
-										ctor: '::',
-										_0: _user$project$View$viewAiringToday2(model),
-										_1: {ctor: '[]'}
-									}
-								});
-						case 'PagIndex':
-							return _user$project$View$viewIndex(model);
-						case 'PagSerie':
-							return _user$project$View$viewSerie(model);
-						case 'PagSerieGenero':
-							return _user$project$View$viewSeriesGenero(model);
-						default:
-							return _user$project$View$viewMinhaLista2(model);
-					}
-				}(),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-
-var _user$project$Main$init = _user$project$Model$Model(
-	A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
-	A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-	{ctor: '[]'})(
-	{ctor: '[]'})('')('')(
-	{ctor: '[]'})(
-	{ctor: '[]'})(
-	A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-	A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+var _user$project$CadastroUsuario$main = _elm_lang$html$Html$program(
 	{
-		ctor: '::',
-		_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
-		_1: {ctor: '[]'}
-	})(
-	{
-		ctor: '::',
-		_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
-		_1: {ctor: '[]'}
-	})(
-	{
-		ctor: '::',
-		_0: A2(_user$project$Aliases$Generos, 0, ''),
-		_1: {ctor: '[]'}
-	})('')(
-	A2(_user$project$Aliases$SeriesGenero, '', 0))(
-	{
-		ctor: '::',
-		_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
-		_1: {ctor: '[]'}
-	})(_user$project$Type$PagIndex);
-var _user$project$Main$main = _elm_lang$html$Html$program(
-	{
-		init: {ctor: '_Tuple2', _0: _user$project$Main$init, _1: _user$project$Get$getGeneros},
-		view: _user$project$View$view,
-		update: _user$project$Update$update,
-		subscriptions: function (_p0) {
+		init: {ctor: '_Tuple2', _0: _user$project$CadastroUsuario$init, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _user$project$CadastroUsuario$view,
+		update: _user$project$CadastroUsuario$update,
+		subscriptions: function (_p3) {
 			return _elm_lang$core$Platform_Sub$none;
 		}
 	})();
@@ -12288,6 +9575,10 @@ Elm['Aliases'] = Elm['Aliases'] || {};
 if (typeof _user$project$Aliases$main !== 'undefined') {
     _user$project$Aliases$main(Elm['Aliases'], 'Aliases', undefined);
 }
+Elm['CadastroUsuario'] = Elm['CadastroUsuario'] || {};
+if (typeof _user$project$CadastroUsuario$main !== 'undefined') {
+    _user$project$CadastroUsuario$main(Elm['CadastroUsuario'], 'CadastroUsuario', undefined);
+}
 Elm['Decodes'] = Elm['Decodes'] || {};
 if (typeof _user$project$Decodes$main !== 'undefined') {
     _user$project$Decodes$main(Elm['Decodes'], 'Decodes', undefined);
@@ -12295,46 +9586,6 @@ if (typeof _user$project$Decodes$main !== 'undefined') {
 Elm['Encodes'] = Elm['Encodes'] || {};
 if (typeof _user$project$Encodes$main !== 'undefined') {
     _user$project$Encodes$main(Elm['Encodes'], 'Encodes', undefined);
-}
-Elm['Functions'] = Elm['Functions'] || {};
-if (typeof _user$project$Functions$main !== 'undefined') {
-    _user$project$Functions$main(Elm['Functions'], 'Functions', undefined);
-}
-Elm['Get'] = Elm['Get'] || {};
-if (typeof _user$project$Get$main !== 'undefined') {
-    _user$project$Get$main(Elm['Get'], 'Get', undefined);
-}
-Elm['Main'] = Elm['Main'] || {};
-if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', undefined);
-}
-Elm['Model'] = Elm['Model'] || {};
-if (typeof _user$project$Model$main !== 'undefined') {
-    _user$project$Model$main(Elm['Model'], 'Model', undefined);
-}
-Elm['Portas'] = Elm['Portas'] || {};
-if (typeof _user$project$Portas$main !== 'undefined') {
-    _user$project$Portas$main(Elm['Portas'], 'Portas', undefined);
-}
-Elm['Portas'] = Elm['Portas'] || {};
-if (typeof _user$project$Portas$main !== 'undefined') {
-    _user$project$Portas$main(Elm['Portas'], 'Portas', undefined);
-}
-Elm['Post'] = Elm['Post'] || {};
-if (typeof _user$project$Post$main !== 'undefined') {
-    _user$project$Post$main(Elm['Post'], 'Post', undefined);
-}
-Elm['Type'] = Elm['Type'] || {};
-if (typeof _user$project$Type$main !== 'undefined') {
-    _user$project$Type$main(Elm['Type'], 'Type', undefined);
-}
-Elm['Update'] = Elm['Update'] || {};
-if (typeof _user$project$Update$main !== 'undefined') {
-    _user$project$Update$main(Elm['Update'], 'Update', undefined);
-}
-Elm['View'] = Elm['View'] || {};
-if (typeof _user$project$View$main !== 'undefined') {
-    _user$project$View$main(Elm['View'], 'View', undefined);
 }
 
 if (typeof define === "function" && define['amd'])

@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
+
+
+
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0px; font-size: 16px; color: #6c6c6c; font-weight: 400; line-height: 28px; background-color: #141414; }
+
+h1, h2, h3, h4, h5, h6 { color: #dadada; margin: 0px 0px 15px 0px; font-weight: 300; font-family: 'Oswald', sans-serif; letter-spacing: 2.5px; text-transform: uppercase; }
+a { text-decoration: none; color: #6c6c6c; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
+a:focus, a:hover { text-decoration: none; color: #ff3c2e; }
+.tutor-block { background-color: #1a1a1a; padding: 15px; }
+.tutor-content { text-align: center; }
+.tutor-title { margin-bottom: 5px; }
+.tutor-designation { color: #ff3c2e; display: block; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-size: 12px; }
+.tutor-img img { width: 100%; margin-bottom: 30px; }
+.social-media { background-color: #292929; padding: 12px; text-align: center; }
+.social-media span { margin-right: 18px; font-size: 20px; font-family: "FontAwesome";}
+.mb60{margin-bottom:60px;}
+.mt30{margin-top:30px;}
+.input-custom {width: 100%;
+    background: transparent;
+    border: 1px solid #fd4c24;
+    height: 50px;
+    padding: 0 15px;
+    color: #dadada;border-right:none;}
+input:focus, input:active {outline:0;}
+.input-custom::placeholder {color:#fd4c24;}
+.form-search {margin: 80px 0 60px 0;}
+.input-group-btn {border: 1px solid #fd4c24;
+    border-left: 0;
+    padding: 0 15px;}
+.input-group-btn button {    background: transparent;
+    border: none;}
+.fa-search {font-size:24px;color:#fd4c24;margin-top: 5px;}
+
+.input-custom-register {width: 100%;
+    background: rgb(27, 27, 27);;
+    border: none;
+    height: 50px;
+    padding: 0 15px;
+    color: #dadada;
+    margin:10px 0;
+}
+.input-custom-register::placeholder {color:#ecf0f1;font-family: 'Roboto', sans-serif;}   
+.btn-padrao {    width: 100%;
+    height: 50px;
+    background: #e04421;
+    color: #dadada;
+    border: none;margin-top: 10px;} 
+    
+.title-tvbox {font-family: 'Montserrat', sans-serif;color:#e04421;}    
+.navbar-inverse .navbar-brand {color:#e04421;}
+#owl-populares .tutor-block {padding:0;}
+#owl-airingtoday .tutor-block {padding:0;}
+@media (min-width: 1200px) { 
+    .container { width:970px;}}

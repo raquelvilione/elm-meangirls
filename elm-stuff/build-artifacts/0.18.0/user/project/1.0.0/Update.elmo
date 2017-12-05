@@ -3,13 +3,72 @@ var _user$project$Update$update = F2(
 		var _p0 = msg;
 		switch (_p0.ctor) {
 			case 'MudarPagina':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{view: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
+				switch (_p0._0.ctor) {
+					case 'PagLogin':
+						return {
+							ctor: '_Tuple2',
+							_0: _user$project$Model$Model(
+								A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
+								A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+								{ctor: '[]'})(
+								{ctor: '[]'})('')('')(
+								{ctor: '[]'})(
+								{ctor: '[]'})(
+								A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+								A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+								{
+									ctor: '::',
+									_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
+									_1: {ctor: '[]'}
+								})(
+								{
+									ctor: '::',
+									_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
+									_1: {ctor: '[]'}
+								})(
+								{
+									ctor: '::',
+									_0: A2(_user$project$Aliases$Generos, 0, ''),
+									_1: {ctor: '[]'}
+								})('')(
+								A2(_user$project$Aliases$SeriesGenero, '', 0))(
+								{
+									ctor: '::',
+									_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
+									_1: {ctor: '[]'}
+								})(_user$project$Type$PagLogin),
+							_1: _elm_lang$core$Platform_Cmd$batch(
+								{
+									ctor: '::',
+									_0: _user$project$Get$getPopulares,
+									_1: {
+										ctor: '::',
+										_0: _user$project$Get$getAiringToday,
+										_1: {
+											ctor: '::',
+											_0: _user$project$Get$getGeneros,
+											_1: {ctor: '[]'}
+										}
+									}
+								})
+						};
+					case 'PagMinhaLista':
+						return {
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{view: _user$project$Type$PagMinhaLista}),
+							_1: _user$project$Get$getMinhaLista(model.usuario.loginToken)
+						};
+					default:
+						return {
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{view: _p0._0}),
+							_1: _elm_lang$core$Platform_Cmd$none
+						};
+				}
 			case 'Nome':
 				return {
 					ctor: '_Tuple2',
@@ -126,7 +185,14 @@ var _user$project$Update$update = F2(
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{mensagem: 'LOGADO'}),
+							{
+								usuario: function (y) {
+									return _elm_lang$core$Native_Utils.update(
+										y,
+										{loginToken: _p2._0});
+								}(model.usuario),
+								view: _user$project$Type$PagStock
+							}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
 				}
@@ -155,7 +221,9 @@ var _user$project$Update$update = F2(
 			case 'SubmitSearch':
 				return {
 					ctor: '_Tuple2',
-					_0: model,
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{view: _user$project$Type$PagSearch}),
 					_1: _user$project$Get$getStocks(model.symbol)
 				};
 			case 'RespostaSearch':
@@ -188,7 +256,7 @@ var _user$project$Update$update = F2(
 						_user$project$Type$ResCadastrarSerie,
 						A3(
 							_elm_lang$http$Http$post,
-							'https://meangirls-raquelvilione.c9users.io/serie/inserir',
+							A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io/serie/inserir/', model.usuario.loginToken),
 							_elm_lang$http$Http$jsonBody(
 								_user$project$Encodes$encodeSerie(_p0._0)),
 							_elm_lang$core$Json_Decode$int))
@@ -407,7 +475,7 @@ var _user$project$Update$update = F2(
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{generoEscolhido: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
+					_1: _user$project$Get$getSeriesGenero(model.generoEscolhido)
 				};
 			case 'Buscar':
 				return {
@@ -415,7 +483,7 @@ var _user$project$Update$update = F2(
 					_0: model,
 					_1: _user$project$Get$getSeriesGenero(model.generoEscolhido)
 				};
-			default:
+			case 'RespostaSG':
 				var _p12 = _p0._0;
 				if (_p12.ctor === 'Err') {
 					return {
@@ -433,6 +501,27 @@ var _user$project$Update$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{seriesGenero: _p12._0, mensagem: 'blz', view: _user$project$Type$PagSerieGenero}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			default:
+				var _p13 = _p0._0;
+				if (_p13.ctor === 'Err') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{
+								mensagem: _elm_lang$core$Basics$toString(_p13._0)
+							}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{minhalista: _p13._0, mensagem: 'blz'}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
 				}
