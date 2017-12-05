@@ -15,7 +15,7 @@ import Type exposing (..)
 -- GET
 -- ----------------------------------------------------------------------------------------------------------------------
 getStocks : String -> Cmd Msg
-getStocks symb = send RespostaSearch <| get ("https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&query=" ++ (mudaString symb)) decodeStock
+getStocks symb = send RespostaSearch <| get ("https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&query=" ++ (mudaString symb)) decodeStockApi
 
 getPopulares : Cmd Msg
 getPopulares = send RespostaSeriesPopulares <| get ("https://api.themoviedb.org/3/tv/popular?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR") decodePopulares
@@ -33,10 +33,10 @@ getGeneros : Cmd Msg
 getGeneros = send RespostaG <| get ("https://api.themoviedb.org/3/genre/tv/list?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR") decodeGeneros
 
 getSeriesGenero : String -> Cmd Msg
-getSeriesGenero s = send RespostaSG <| get ("https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=" ++ s ++ "&include_null_first_air_dates=false") decodeSeriesGenero
+getSeriesGenero s = send RespostaSG <| get ("https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=" ++ s ++ "&include_null_first_air_dates=false") decodeStockApi
 
 getMinhaLista : String -> Cmd Msg
-getMinhaLista x = send RespostaMinhaLista <| get ("https://meangirls-raquelvilione.c9users.io//serie/listar-todas/" ++ x) decodeStock
+getMinhaLista x = send RespostaMinhaLista <| get ("https://meangirls-raquelvilione.c9users.io/user-serie/listar-todas/" ++ x) decodeStock
 -- ----------------------------------------------------------------------------------------------------------------------
 --
 -- ----------------------------------------------------------------------------------------------------------------------

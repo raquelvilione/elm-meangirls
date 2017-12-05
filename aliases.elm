@@ -71,8 +71,13 @@ type alias Generos =
   }
 
 type alias SeriesGenero =
-  { nome : String
-  , id : Int
+  { id_ : Int
+  , nome : String
+  , mediaNota : Float
+  , poster : Maybe String
+  , dataInicio : String
+  , popularidade : Float
+  , sinopse : String
   }
 -- ----------------------------------------------------------------------------------------------------------------------
 --

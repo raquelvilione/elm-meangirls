@@ -29,12 +29,9 @@ init = Model
     [] [] "" "" [] []
     (SerieAtual 0 "" 0 Nothing "" 0 "")
     (AiringToday 0 "" 0 Nothing "" 0 "")
-    [Temporadas 0 0 "" "" 0]
-    [Episodios 0 0 ""]
-    [Generos 0 ""]
-    ""
-    (SeriesGenero "" 0)
-    [SeriesGenero "" 0]
+    [] [] [] ""
+    (Generos 0 "")
+    []
     PagIndex
 -- ----------------------------------------------------------------------------------------------------------------------
 -- MAIN

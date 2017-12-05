@@ -16,26 +16,26 @@ import Model exposing (..)
 import Portas exposing (..)
 import Post exposing (..)
 import Type exposing (..)
+
+init = (Model
+                (DadosUsuario "" "" "" "" "" "")
+                (Stock 0 "" 0 Nothing "" 0 "")
+                [] [] "" "" [] []
+                (SerieAtual 0 "" 0 Nothing "" 0 "")
+                (AiringToday 0 "" 0 Nothing "" 0 "")
+                [] [] [] ""
+                (Generos 0 "")
+                []
+                PagIndex, Cmd.batch [getPopulares, getAiringToday, getGeneros])
 -- ----------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -- ----------------------------------------------------------------------------------------------------------------------
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
-        MudarPagina PagLogin ->
-            (Model
-                (DadosUsuario "" "" "" "" "" "")
-                (Stock 0 "" 0 Nothing "" 0 "")
-                [] [] "" "" [] []
-                (SerieAtual 0 "" 0 Nothing "" 0 "")
-                (AiringToday 0 "" 0 Nothing "" 0 "")
-                [Temporadas 0 0 "" "" 0]
-                [Episodios 0 0 ""]
-                [Generos 0 ""]
-                ""
-                (SeriesGenero "" 0)
-                [SeriesGenero "" 0]
-                PagLogin, Cmd.batch [getPopulares, getAiringToday, getGeneros])
+        MudarPagina PagIndex -> init
+        MudarPagina PagStock -> 
+            ({ model | view = PagStock }, Cmd.batch [getPopulares, getAiringToday, getGeneros])
         MudarPagina PagMinhaLista ->
             ({ model | view = PagMinhaLista}, getMinhaLista model.usuario.loginToken)
         MudarPagina x ->
@@ -87,7 +87,7 @@ update msg model =
 
         RespostaSearch resp ->
             case resp of
-                Err x -> ({ model | symbol = toString x}, Cmd.none)
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
                 Ok lista -> ({model | stocks = lista}, Cmd.none)
         
         CadastrarSerie stock ->
@@ -95,7 +95,7 @@ update msg model =
             
         ResCadastrarSerie resposta ->
             case resposta of
-                Err x -> ({ model | symbol = toString x}, Cmd.none)
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
                 Ok lista -> ({model | symbol = toString lista}, Cmd.none)
 -- ---------------------------------------------------------
 -- POPULARES

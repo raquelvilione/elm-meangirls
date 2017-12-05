@@ -2,9 +2,9 @@ module View exposing (..)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- IMPORT
 -- ----------------------------------------------------------------------------------------------------------------------
-import Html exposing (table, thead,h1,b, tbody, a, li,ul, tr, td, text, input, label, fieldset, div, form, button, Html, program,img,p,h5,span,i,hr,option,select)
+import Html exposing (table, thead,h1,h2,h3,b, tbody, a, li,ul, tr, td, text, input, label, fieldset, div, form, button, Html, program,img,p,h5,span,i,hr,option,select,section,footer)
 import Html.Events exposing (onSubmit, onInput, onClick, on)
-import Html.Attributes exposing (type_, placeholder,href, value, required, style, min,height,src,class,id,target)
+import Html.Attributes exposing (type_, placeholder,href, value, required, style, min,height,src,class,id,target,align)
 import Http exposing (post, send, get,jsonBody,Request,Body,expectJson,request,header)
 import Json.Decode exposing (string,int, field, float, list, Decoder,map6,keyValuePairs, nullable)
 import Regex exposing (..)
@@ -30,25 +30,26 @@ view model =
                              , span [class "icon-bar"][]
                              , span [class "icon-bar"][]
                         ]
-                        , a [class "navbar-brand title-tvbox", href "#"][text "tvbox",text model.mensagem]
+                        , a [class "navbar-brand title-tvbox", href "#"][text "tvbox"]
                     ]
                     , div [class "collapse navbar-collapse"]
                         (if (model.usuario.loginToken /= "") then
                             [ul [class "nav navbar-nav navbar-right"]
-                                [ viewSearch model
-                                ,li [] [ a [href "#", onClick (MudarPagina PagStock)]       [text "Home"]]
+                                [ 
+                                li [] [ a [href "#", onClick (MudarPagina PagStock)]       [text "Home"]]
                                 ,li [] [ a [href "#", onClick (MudarPagina PagMinhaLista)]  [text "Minha Lista"]]
-                                ,li [] [ a [href "#", onClick (MudarPagina PagLogin)]       [text "Sair"]]]
+                                ,li [] [ a [href "#", onClick (MudarPagina PagIndex)]       [text "Sair"]]]
                             , div [id "genres-select", class "navbar-form navbar-right"] [
                                     div [class "form-group"] [
                                         select [onInput GeneroEscolhido] (List.map viewGeneros model.generos)
                                     ]
                                 ]
+                            , div [] [viewSearch model]
                             ]
                         else
                             [ul [class "nav navbar-nav navbar-right"]
-                                [ li [] [ a [href "#", onClick (MudarPagina PagLogin)]      [text "Login"]]
-                                , li [] [ a [href "#", onClick (MudarPagina PagCadastro)]   [text "Cadastro"]]
+                               [ li [] [ a [href "#", onClick (MudarPagina PagLogin)]      [text ""]]
+                                , li [] [ a [href "#", onClick (MudarPagina PagCadastro)]   [text ""]]
                                 ]
                             ])
                         ]
@@ -70,7 +71,76 @@ view model =
 -- ---------------------------------------------------------
 viewIndex : Model -> Html Msg
 viewIndex model = 
-    span [][]
+    div [id "home"] [
+        div [id "myCarousel", class "home carousel slide"] [
+            div [class "carousel-inner"] [
+                div [class "item active"] [
+                    div [class "fill um"] []
+                ]
+                , div [class "item"] [
+                    div [class "fill dois"] []
+                ]
+                , div [class "item"] [
+                    div [class "fill tres"] []
+                ]
+            ]           
+        ]
+        , div [id "text-banner"] [
+            h1 [] [text "SUAS SÉRIES FAVORITAS"]
+            , h1 [] [text "EM UM SÓ LUGAR"]
+            , button [class "btn-home", onClick (MudarPagina PagLogin)] [text "LOGIN"]
+            , button [class "btn-home", onClick (MudarPagina PagCadastro)] [text "CADASTRO"]
+        
+        ]
+        , section [id "funcionalidades"] [
+            div [class "container"] [
+                h2 [class "title-home"] [text "TUDO QUE VOCÊ PRECISA"]
+                
+                , div [class "row"] [
+                    div [class "col-md-4"] [
+                        img [class "img-responsive", src ("https://elm-raquelvilione.c9users.io/imagens/search.png")] []
+                        , h3 [] [text "Procure suas séries"]
+                    ]
+                    
+                    , div [class "col-md-4"] [
+                        img [class "img-responsive", src ("https://elm-raquelvilione.c9users.io/imagens/list.png")] []
+                        , h3 [] [text "Filtre por gênero"]
+                    ]
+                    
+                    , div [class "col-md-4"] [
+                        img [class "img-responsive", src ("https://elm-raquelvilione.c9users.io/imagens/star.png")] []
+                        , h3 [] [text "Encontre as mais populares"]
+                    ]
+                ]
+                
+                , div [class "row"] [
+                    div [class "col-md-4"] [
+                        img [class "img-responsive", src ("https://elm-raquelvilione.c9users.io/imagens/monitor.png")] []
+                        , h3 [] [text "Acesse as temporadas"]
+                    ]
+                    
+                    , div [class "col-md-4"] [
+                        img [class "img-responsive", src ("https://elm-raquelvilione.c9users.io/imagens/menu.png")] []
+                        , h3 [] [text "Veja os episódios"]
+                    ]
+                    
+                    , div [class "col-md-4"] [
+                        img [class "img-responsive", src ("https://elm-raquelvilione.c9users.io/imagens/lista.png")] []
+                        , h3 [] [text "Monte sua lista"]
+                    ]
+                ]
+            ]
+        ]
+        , section [id "dois"] [
+            div [align "center", class "container"] [
+                h2 [class "title-home"] [text "NÃO PERCA TEMPO"]
+                , button [class "btn-home dois", onClick (MudarPagina PagCadastro)] [text "CADASTRE-SE"]
+            ]
+        ]
+        , footer [] [
+            p [] [text "Todos os direitos reservados - 2017"]
+        ]
+    ]
 -- ---------------------------------------------------------
 -- CADASTRO USUÁRIO
 -- ---------------------------------------------------------
@@ -124,8 +194,8 @@ viewStock stock =
                     img [src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" stock.poster))] []
                 ]
                 , div [class "tutor-content"] [
-                    h5 [class "tutor-title"] [text <| tiraAspas <| toString stock.nome]
-                    , div [] [a [href "#"] [button [class "btn-ver", onClick (VerSerie stock)] [text "Visualizar"]]]
+                    -- h5 [class "tutor-title"] [text <| tiraAspas <| toString stock.nome]
+                    div [] [a [href "#"] [button [class "btn-ver", onClick (VerSerie stock)] [text "Visualizar"]]]
                     -- , div [] [button [onClick (CadastrarSerie stock)] [text "+"]]
                 ]
             ]
@@ -143,7 +213,7 @@ viewStock2 model =
 -- ---------------------------------------------------------    
 viewSearch : Model -> Html Msg
 viewSearch model =
-    div [class "container"] [
+    div [] [
         div []
             [ form [class "form-search", onSubmit SubmitSearch]
                 [ 
@@ -279,14 +349,14 @@ viewGeneros : (Generos) -> Html Msg
 viewGeneros (genero) =
     option [value <| toString genero.id] [text genero.nome]
 
-viewSeriesG : Generos -> Html Msg
+viewSeriesG : SeriesGenero -> Html Msg
 viewSeriesG model =
         div [class "col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30"] [ 
             div [class "tutor-block"] [
                 div [class "tutor-block"] [
-                     div [class "tutor-content"] [
-                        h5 [class "tutor-title"] [text <| tiraAspas <| toString model.nome]
-                        , span [class "tutor-designation"] [text <| toString model.id]
+                     div [class "tutor-content", onClick (VerSerie model)] [
+                        img [class "img-responsive", src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| Maybe.withDefault "" model.poster))] []
+                      , h5 [class "tutor-title"] [text <| tiraAspas <| toString model.nome]
                     ]
                 ]
             ]
@@ -294,7 +364,7 @@ viewSeriesG model =
 
 viewSeriesGenero : Model -> Html Msg
 viewSeriesGenero model =
-        div [] (List.map viewSeriesG model.seriesGenero)
+        div [class "container"] (List.map viewSeriesG model.seriesGenero)
 -- ---------------------------------------------------------
 -- MINHA LISTA
 -- ---------------------------------------------------------    
@@ -303,11 +373,15 @@ viewMinhaLista stock =
         div [class "col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30"] [ 
             div [class "tutor-block resultados"] [
                 div [class "tutor-img"] [
-                    img [src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" stock.poster))] []
+                    img [onClick (VerSerie stock), class "point", src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| toString <| Maybe.withDefault "" stock.poster))] []
                 ]
                 , div [class "tutor-content"] [
                     h5 [class "tutor-title"] [text <| tiraAspas <| toString stock.nome]
-                    , div [] [a [href "#"] [button [class "btn-ver", onClick (VerSerie stock)] [text "Visualizar"]]]
+                    , div [] [
+                        -- a [href "#"] [button [class "btn-ver dois", onClick (VerSerie stock)] [text "Ver"]]
+                        a [href "#"] [button [class "btn-ver excluir"] [text "Excluir"]]
+                        ]
+                    
                     -- , div [] [button [onClick (CadastrarSerie stock)] [text "+"]]
                 ]
             ]
@@ -318,7 +392,7 @@ viewMinhaLista2 model =
         div [class "container"] [
             h1 [class "title-tvbox"] [text "MINHA LISTA"]
         ]
-        , div [] (List.map viewMinhaLista model.minhalista)
+        , div [class "container"] (List.map viewMinhaLista model.minhalista)
     ]
 -- ----------------------------------------------------------------------------------------------------------------------
 --

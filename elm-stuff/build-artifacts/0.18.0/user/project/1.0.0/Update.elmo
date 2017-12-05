@@ -1,42 +1,48 @@
+var _user$project$Update$init = {
+	ctor: '_Tuple2',
+	_0: _user$project$Model$Model(
+		A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
+		A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+		{ctor: '[]'})(
+		{ctor: '[]'})('')('')(
+		{ctor: '[]'})(
+		{ctor: '[]'})(
+		A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+		A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+		{ctor: '[]'})(
+		{ctor: '[]'})(
+		{ctor: '[]'})('')(
+		A2(_user$project$Aliases$Generos, 0, ''))(
+		{ctor: '[]'})(_user$project$Type$PagIndex),
+	_1: _elm_lang$core$Platform_Cmd$batch(
+		{
+			ctor: '::',
+			_0: _user$project$Get$getPopulares,
+			_1: {
+				ctor: '::',
+				_0: _user$project$Get$getAiringToday,
+				_1: {
+					ctor: '::',
+					_0: _user$project$Get$getGeneros,
+					_1: {ctor: '[]'}
+				}
+			}
+		})
+};
 var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
 			case 'MudarPagina':
 				switch (_p0._0.ctor) {
-					case 'PagLogin':
+					case 'PagIndex':
+						return _user$project$Update$init;
+					case 'PagStock':
 						return {
 							ctor: '_Tuple2',
-							_0: _user$project$Model$Model(
-								A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
-								A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								{ctor: '[]'})(
-								{ctor: '[]'})('')('')(
-								{ctor: '[]'})(
-								{ctor: '[]'})(
-								A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								{
-									ctor: '::',
-									_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
-									_1: {ctor: '[]'}
-								})(
-								{
-									ctor: '::',
-									_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
-									_1: {ctor: '[]'}
-								})(
-								{
-									ctor: '::',
-									_0: A2(_user$project$Aliases$Generos, 0, ''),
-									_1: {ctor: '[]'}
-								})('')(
-								A2(_user$project$Aliases$SeriesGenero, '', 0))(
-								{
-									ctor: '::',
-									_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
-									_1: {ctor: '[]'}
-								})(_user$project$Type$PagLogin),
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{view: _user$project$Type$PagStock}),
 							_1: _elm_lang$core$Platform_Cmd$batch(
 								{
 									ctor: '::',
@@ -234,7 +240,7 @@ var _user$project$Update$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{
-								symbol: _elm_lang$core$Basics$toString(_p3._0)
+								mensagem: _elm_lang$core$Basics$toString(_p3._0)
 							}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
@@ -269,7 +275,7 @@ var _user$project$Update$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{
-								symbol: _elm_lang$core$Basics$toString(_p4._0)
+								mensagem: _elm_lang$core$Basics$toString(_p4._0)
 							}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};

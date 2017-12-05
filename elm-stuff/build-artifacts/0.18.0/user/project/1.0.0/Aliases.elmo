@@ -30,7 +30,7 @@ var _user$project$Aliases$Generos = F2(
 	function (a, b) {
 		return {id: a, nome: b};
 	});
-var _user$project$Aliases$SeriesGenero = F2(
-	function (a, b) {
-		return {nome: a, id: b};
+var _user$project$Aliases$SeriesGenero = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
 	});

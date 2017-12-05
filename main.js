@@ -9202,20 +9202,28 @@ var _user$project$Aliases$Generos = F2(
 	function (a, b) {
 		return {id: a, nome: b};
 	});
-var _user$project$Aliases$SeriesGenero = F2(
-	function (a, b) {
-		return {nome: a, id: b};
+var _user$project$Aliases$SeriesGenero = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id_: a, nome: b, mediaNota: c, poster: d, dataInicio: e, popularidade: f, sinopse: g};
 	});
 
 var _user$project$Decodes$decodeSeriesGenero = A2(
 	_elm_lang$core$Json_Decode$field,
 	'results',
 	_elm_lang$core$Json_Decode$list(
-		A3(
-			_elm_lang$core$Json_Decode$map2,
+		A8(
+			_elm_lang$core$Json_Decode$map7,
 			_user$project$Aliases$SeriesGenero,
-			A2(_elm_lang$core$Json_Decode$field, 'original_name', _elm_lang$core$Json_Decode$string),
-			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int))));
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
+			A2(
+				_elm_lang$core$Json_Decode$field,
+				'poster_path',
+				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
+			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
+			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
 var _user$project$Decodes$decodeGeneros = A2(
 	_elm_lang$core$Json_Decode$field,
 	'genres',
@@ -9282,6 +9290,23 @@ var _user$project$Decodes$decodePopulares = A2(
 			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
 			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
 var _user$project$Decodes$decodeRespLogin = A2(_elm_lang$core$Json_Decode$field, 'resp', _elm_lang$core$Json_Decode$string);
+var _user$project$Decodes$decodeStockApi = A2(
+	_elm_lang$core$Json_Decode$field,
+	'results',
+	_elm_lang$core$Json_Decode$list(
+		A8(
+			_elm_lang$core$Json_Decode$map7,
+			_user$project$Aliases$Stock,
+			A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$int),
+			A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'vote_average', _elm_lang$core$Json_Decode$float),
+			A2(
+				_elm_lang$core$Json_Decode$field,
+				'poster_path',
+				_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string)),
+			A2(_elm_lang$core$Json_Decode$field, 'first_air_date', _elm_lang$core$Json_Decode$string),
+			A2(_elm_lang$core$Json_Decode$field, 'popularity', _elm_lang$core$Json_Decode$float),
+			A2(_elm_lang$core$Json_Decode$field, 'overview', _elm_lang$core$Json_Decode$string))));
 var _user$project$Decodes$decodeStock = A2(
 	_elm_lang$core$Json_Decode$field,
 	'resp',
@@ -9653,7 +9678,7 @@ var _user$project$Get$getMinhaLista = function (x) {
 		_user$project$Type$RespostaMinhaLista,
 		A2(
 			_elm_lang$http$Http$get,
-			A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io//serie/listar-todas/', x),
+			A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io/user-serie/listar-todas/', x),
 			_user$project$Decodes$decodeStock));
 };
 var _user$project$Get$getSeriesGenero = function (s) {
@@ -9666,7 +9691,7 @@ var _user$project$Get$getSeriesGenero = function (s) {
 				_elm_lang$core$Basics_ops['++'],
 				'https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=',
 				A2(_elm_lang$core$Basics_ops['++'], s, '&include_null_first_air_dates=false')),
-			_user$project$Decodes$decodeSeriesGenero));
+			_user$project$Decodes$decodeStockApi));
 };
 var _user$project$Get$getGeneros = A2(
 	_elm_lang$http$Http$send,
@@ -9721,7 +9746,7 @@ var _user$project$Get$getStocks = function (symb) {
 				_elm_lang$core$Basics_ops['++'],
 				'https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&query=',
 				_user$project$Functions$mudaString(symb)),
-			_user$project$Decodes$decodeStock));
+			_user$project$Decodes$decodeStockApi));
 };
 
 var _user$project$Model$Model = function (a) {
@@ -9783,45 +9808,51 @@ var _user$project$Post$postWhole = F3(
 			});
 	});
 
+var _user$project$Update$init = {
+	ctor: '_Tuple2',
+	_0: _user$project$Model$Model(
+		A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
+		A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+		{ctor: '[]'})(
+		{ctor: '[]'})('')('')(
+		{ctor: '[]'})(
+		{ctor: '[]'})(
+		A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+		A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
+		{ctor: '[]'})(
+		{ctor: '[]'})(
+		{ctor: '[]'})('')(
+		A2(_user$project$Aliases$Generos, 0, ''))(
+		{ctor: '[]'})(_user$project$Type$PagIndex),
+	_1: _elm_lang$core$Platform_Cmd$batch(
+		{
+			ctor: '::',
+			_0: _user$project$Get$getPopulares,
+			_1: {
+				ctor: '::',
+				_0: _user$project$Get$getAiringToday,
+				_1: {
+					ctor: '::',
+					_0: _user$project$Get$getGeneros,
+					_1: {ctor: '[]'}
+				}
+			}
+		})
+};
 var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
 			case 'MudarPagina':
 				switch (_p0._0.ctor) {
-					case 'PagLogin':
+					case 'PagIndex':
+						return _user$project$Update$init;
+					case 'PagStock':
 						return {
 							ctor: '_Tuple2',
-							_0: _user$project$Model$Model(
-								A6(_user$project$Aliases$DadosUsuario, '', '', '', '', '', ''))(
-								A7(_user$project$Aliases$Stock, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								{ctor: '[]'})(
-								{ctor: '[]'})('')('')(
-								{ctor: '[]'})(
-								{ctor: '[]'})(
-								A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-								{
-									ctor: '::',
-									_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
-									_1: {ctor: '[]'}
-								})(
-								{
-									ctor: '::',
-									_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
-									_1: {ctor: '[]'}
-								})(
-								{
-									ctor: '::',
-									_0: A2(_user$project$Aliases$Generos, 0, ''),
-									_1: {ctor: '[]'}
-								})('')(
-								A2(_user$project$Aliases$SeriesGenero, '', 0))(
-								{
-									ctor: '::',
-									_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
-									_1: {ctor: '[]'}
-								})(_user$project$Type$PagLogin),
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{view: _user$project$Type$PagStock}),
 							_1: _elm_lang$core$Platform_Cmd$batch(
 								{
 									ctor: '::',
@@ -10019,7 +10050,7 @@ var _user$project$Update$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{
-								symbol: _elm_lang$core$Basics$toString(_p3._0)
+								mensagem: _elm_lang$core$Basics$toString(_p3._0)
 							}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
@@ -10054,7 +10085,7 @@ var _user$project$Update$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{
-								symbol: _elm_lang$core$Basics$toString(_p4._0)
+								mensagem: _elm_lang$core$Basics$toString(_p4._0)
 							}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
@@ -10313,6 +10344,172 @@ var _user$project$Update$update = F2(
 		}
 	});
 
+var _user$project$View$viewMinhaLista = function (stock) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('tutor-block resultados'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$img,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(
+										_user$project$Type$VerSerie(stock)),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('point'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$src(
+												A2(
+													_elm_lang$core$Basics_ops['++'],
+													'http://image.tmdb.org/t/p/w185/',
+													_user$project$Functions$tiraAspas(
+														_elm_lang$core$Basics$toString(
+															A2(_elm_lang$core$Maybe$withDefault, '', stock.poster))))),
+											_1: {ctor: '[]'}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$h5,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											_user$project$Functions$tiraAspas(
+												_elm_lang$core$Basics$toString(stock.nome))),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$a,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$href('#'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$button,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('btn-ver excluir'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('Excluir'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$View$viewMinhaLista2 = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('espac'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('container'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$h1,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('title-tvbox'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('MINHA LISTA'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('container'),
+						_1: {ctor: '[]'}
+					},
+					A2(_elm_lang$core$List$map, _user$project$View$viewMinhaLista, model.minhalista)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
 var _user$project$View$viewSeriesG = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -10346,37 +10543,46 @@ var _user$project$View$viewSeriesG = function (model) {
 								{
 									ctor: '::',
 									_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onClick(
+											_user$project$Type$VerSerie(model)),
+										_1: {ctor: '[]'}
+									}
 								},
 								{
 									ctor: '::',
 									_0: A2(
-										_elm_lang$html$Html$h5,
+										_elm_lang$html$Html$img,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-											_1: {ctor: '[]'}
+											_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$src(
+													A2(
+														_elm_lang$core$Basics_ops['++'],
+														'http://image.tmdb.org/t/p/w185/',
+														_user$project$Functions$tiraAspas(
+															A2(_elm_lang$core$Maybe$withDefault, '', model.poster)))),
+												_1: {ctor: '[]'}
+											}
 										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(
-												_user$project$Functions$tiraAspas(
-													_elm_lang$core$Basics$toString(model.nome))),
-											_1: {ctor: '[]'}
-										}),
+										{ctor: '[]'}),
 									_1: {
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$span,
+											_elm_lang$html$Html$h5,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('tutor-designation'),
+												_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
 												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
 												_0: _elm_lang$html$Html$text(
-													_elm_lang$core$Basics$toString(model.id)),
+													_user$project$Functions$tiraAspas(
+														_elm_lang$core$Basics$toString(model.nome))),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -10392,7 +10598,11 @@ var _user$project$View$viewSeriesG = function (model) {
 var _user$project$View$viewSeriesGenero = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('container'),
+			_1: {ctor: '[]'}
+		},
 		A2(_elm_lang$core$List$map, _user$project$View$viewSeriesG, model.seriesGenero));
 };
 var _user$project$View$viewGeneros = function (genero) {
@@ -11110,11 +11320,7 @@ var _user$project$View$viewPopulares2 = function (model) {
 var _user$project$View$viewSearch = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('container'),
-			_1: {ctor: '[]'}
-		},
+		{ctor: '[]'},
 		{
 			ctor: '::',
 			_0: A2(
@@ -11206,164 +11412,6 @@ var _user$project$View$viewSearch = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$View$viewMinhaLista = function (stock) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block resultados'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$img,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'http://image.tmdb.org/t/p/w185/',
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(
-													A2(_elm_lang$core$Maybe$withDefault, '', stock.poster))))),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$h5,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(stock.nome))),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$a,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$href('#'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$button,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('btn-ver'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Type$VerSerie(stock)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('Visualizar'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
-							}),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$View$viewMinhaLista2 = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('espac'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('container'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$h1,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('title-tvbox'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('MINHA LISTA'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
-					A2(_elm_lang$core$List$map, _user$project$View$viewMinhaLista, model.minhalista)),
-				_1: {ctor: '[]'}
-			}
-		});
-};
 var _user$project$View$viewStock = function (stock) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -11420,58 +11468,41 @@ var _user$project$View$viewStock = function (stock) {
 							{
 								ctor: '::',
 								_0: A2(
-									_elm_lang$html$Html$h5,
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											_user$project$Functions$tiraAspas(
-												_elm_lang$core$Basics$toString(stock.nome))),
+										_0: A2(
+											_elm_lang$html$Html$a,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$href('#'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$button,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('btn-ver'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onClick(
+																_user$project$Type$VerSerie(stock)),
+															_1: {ctor: '[]'}
+														}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('Visualizar'),
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											}),
 										_1: {ctor: '[]'}
 									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$a,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$href('#'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$button,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('btn-ver'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Type$VerSerie(stock)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('Visualizar'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
+								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
 					}
@@ -11867,9 +11898,538 @@ var _user$project$View$viewCadastro = function (model) {
 };
 var _user$project$View$viewIndex = function (model) {
 	return A2(
-		_elm_lang$html$Html$span,
-		{ctor: '[]'},
-		{ctor: '[]'});
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$id('home'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$id('myCarousel'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('home carousel slide'),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('carousel-inner'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('item active'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('fill um'),
+											_1: {ctor: '[]'}
+										},
+										{ctor: '[]'}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('item'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('fill dois'),
+												_1: {ctor: '[]'}
+											},
+											{ctor: '[]'}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('item'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('fill tres'),
+													_1: {ctor: '[]'}
+												},
+												{ctor: '[]'}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$id('text-banner'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$h1,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('SUAS SÉRIES FAVORITAS'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$h1,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('EM UM SÓ LUGAR'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$button,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('btn-home'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onClick(
+												_user$project$Type$MudarPagina(_user$project$Type$PagLogin)),
+											_1: {ctor: '[]'}
+										}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('LOGIN'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$button,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('btn-home'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onClick(
+													_user$project$Type$MudarPagina(_user$project$Type$PagCadastro)),
+												_1: {ctor: '[]'}
+											}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('CADASTRO'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$section,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$id('funcionalidades'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('container'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$h2,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('title-home'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('TUDO QUE VOCÊ PRECISA'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('row'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$div,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('col-md-4'),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$img,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$src('https://elm-raquelvilione.c9users.io/imagens/search.png'),
+																	_1: {ctor: '[]'}
+																}
+															},
+															{ctor: '[]'}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$h3,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text('Procure suas séries'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$div,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('col-md-4'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$img,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$src('https://elm-raquelvilione.c9users.io/imagens/list.png'),
+																		_1: {ctor: '[]'}
+																	}
+																},
+																{ctor: '[]'}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$h3,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html$text('Filtre por gênero'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$div,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$class('col-md-4'),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$img,
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$src('https://elm-raquelvilione.c9users.io/imagens/star.png'),
+																			_1: {ctor: '[]'}
+																		}
+																	},
+																	{ctor: '[]'}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_elm_lang$html$Html$h3,
+																		{ctor: '[]'},
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html$text('Encontre as mais populares'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('row'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$div,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('col-md-4'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$img,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$src('https://elm-raquelvilione.c9users.io/imagens/monitor.png'),
+																		_1: {ctor: '[]'}
+																	}
+																},
+																{ctor: '[]'}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$h3,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html$text('Acesse as temporadas'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$div,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$class('col-md-4'),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$img,
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$src('https://elm-raquelvilione.c9users.io/imagens/menu.png'),
+																			_1: {ctor: '[]'}
+																		}
+																	},
+																	{ctor: '[]'}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_elm_lang$html$Html$h3,
+																		{ctor: '[]'},
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html$text('Veja os episódios'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$div,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$class('col-md-4'),
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: A2(
+																		_elm_lang$html$Html$img,
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
+																			_1: {
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$src('https://elm-raquelvilione.c9users.io/imagens/lista.png'),
+																				_1: {ctor: '[]'}
+																			}
+																		},
+																		{ctor: '[]'}),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(
+																			_elm_lang$html$Html$h3,
+																			{ctor: '[]'},
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html$text('Monte sua lista'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$section,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$id('dois'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$align('center'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('container'),
+											_1: {ctor: '[]'}
+										}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$h2,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('title-home'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('NÃO PERCA TEMPO'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$button,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('btn-home dois'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onClick(
+															_user$project$Type$MudarPagina(_user$project$Type$PagCadastro)),
+														_1: {ctor: '[]'}
+													}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('CADASTRE-SE'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$footer,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$p,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Todos os direitos reservados - 2017'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
 };
 var _user$project$View$view = function (model) {
 	return A2(
@@ -11978,11 +12538,7 @@ var _user$project$View$view = function (model) {
 													{
 														ctor: '::',
 														_0: _elm_lang$html$Html$text('tvbox'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(model.mensagem),
-															_1: {ctor: '[]'}
-														}
+														_1: {ctor: '[]'}
 													}),
 												_1: {ctor: '[]'}
 											}
@@ -12007,7 +12563,30 @@ var _user$project$View$view = function (model) {
 													},
 													{
 														ctor: '::',
-														_0: _user$project$View$viewSearch(model),
+														_0: A2(
+															_elm_lang$html$Html$li,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$a,
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$href('#'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Events$onClick(
+																				_user$project$Type$MudarPagina(_user$project$Type$PagStock)),
+																			_1: {ctor: '[]'}
+																		}
+																	},
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html$text('Home'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}),
 														_1: {
 															ctor: '::',
 															_0: A2(
@@ -12023,13 +12602,13 @@ var _user$project$View$view = function (model) {
 																			_1: {
 																				ctor: '::',
 																				_0: _elm_lang$html$Html_Events$onClick(
-																					_user$project$Type$MudarPagina(_user$project$Type$PagStock)),
+																					_user$project$Type$MudarPagina(_user$project$Type$PagMinhaLista)),
 																				_1: {ctor: '[]'}
 																			}
 																		},
 																		{
 																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('Home'),
+																			_0: _elm_lang$html$Html$text('Minha Lista'),
 																			_1: {ctor: '[]'}
 																		}),
 																	_1: {ctor: '[]'}
@@ -12049,45 +12628,18 @@ var _user$project$View$view = function (model) {
 																				_1: {
 																					ctor: '::',
 																					_0: _elm_lang$html$Html_Events$onClick(
-																						_user$project$Type$MudarPagina(_user$project$Type$PagMinhaLista)),
+																						_user$project$Type$MudarPagina(_user$project$Type$PagIndex)),
 																					_1: {ctor: '[]'}
 																				}
 																			},
 																			{
 																				ctor: '::',
-																				_0: _elm_lang$html$Html$text('Minha Lista'),
+																				_0: _elm_lang$html$Html$text('Sair'),
 																				_1: {ctor: '[]'}
 																			}),
 																		_1: {ctor: '[]'}
 																	}),
-																_1: {
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$li,
-																		{ctor: '[]'},
-																		{
-																			ctor: '::',
-																			_0: A2(
-																				_elm_lang$html$Html$a,
-																				{
-																					ctor: '::',
-																					_0: _elm_lang$html$Html_Attributes$href('#'),
-																					_1: {
-																						ctor: '::',
-																						_0: _elm_lang$html$Html_Events$onClick(
-																							_user$project$Type$MudarPagina(_user$project$Type$PagLogin)),
-																						_1: {ctor: '[]'}
-																					}
-																				},
-																				{
-																					ctor: '::',
-																					_0: _elm_lang$html$Html$text('Sair'),
-																					_1: {ctor: '[]'}
-																				}),
-																			_1: {ctor: '[]'}
-																		}),
-																	_1: {ctor: '[]'}
-																}
+																_1: {ctor: '[]'}
 															}
 														}
 													}),
@@ -12127,7 +12679,18 @@ var _user$project$View$view = function (model) {
 																}),
 															_1: {ctor: '[]'}
 														}),
-													_1: {ctor: '[]'}
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$div,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _user$project$View$viewSearch(model),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
 												}
 											} : {
 												ctor: '::',
@@ -12159,7 +12722,7 @@ var _user$project$View$view = function (model) {
 																	},
 																	{
 																		ctor: '::',
-																		_0: _elm_lang$html$Html$text('Login'),
+																		_0: _elm_lang$html$Html$text(''),
 																		_1: {ctor: '[]'}
 																	}),
 																_1: {ctor: '[]'}
@@ -12185,7 +12748,7 @@ var _user$project$View$view = function (model) {
 																		},
 																		{
 																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('Cadastro'),
+																			_0: _elm_lang$html$Html$text(''),
 																			_1: {ctor: '[]'}
 																		}),
 																	_1: {ctor: '[]'}
@@ -12252,27 +12815,11 @@ var _user$project$Main$init = _user$project$Model$Model(
 	{ctor: '[]'})(
 	A7(_user$project$Aliases$SerieAtual, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
 	A7(_user$project$Aliases$AiringToday, 0, '', 0, _elm_lang$core$Maybe$Nothing, '', 0, ''))(
-	{
-		ctor: '::',
-		_0: A5(_user$project$Aliases$Temporadas, 0, 0, '', '', 0),
-		_1: {ctor: '[]'}
-	})(
-	{
-		ctor: '::',
-		_0: A3(_user$project$Aliases$Episodios, 0, 0, ''),
-		_1: {ctor: '[]'}
-	})(
-	{
-		ctor: '::',
-		_0: A2(_user$project$Aliases$Generos, 0, ''),
-		_1: {ctor: '[]'}
-	})('')(
-	A2(_user$project$Aliases$SeriesGenero, '', 0))(
-	{
-		ctor: '::',
-		_0: A2(_user$project$Aliases$SeriesGenero, '', 0),
-		_1: {ctor: '[]'}
-	})(_user$project$Type$PagIndex);
+	{ctor: '[]'})(
+	{ctor: '[]'})(
+	{ctor: '[]'})('')(
+	A2(_user$project$Aliases$Generos, 0, ''))(
+	{ctor: '[]'})(_user$project$Type$PagIndex);
 var _user$project$Main$main = _elm_lang$html$Html$program(
 	{
 		init: {ctor: '_Tuple2', _0: _user$project$Main$init, _1: _user$project$Get$getGeneros},

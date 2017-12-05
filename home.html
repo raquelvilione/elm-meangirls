@@ -17,35 +17,25 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     
-    <body id="pag-inicial">
-       <header id="header" class="headroom">
-        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand title-tvbox" href="#">tvbox</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">MINHA LISTA</a></li>
-                        <li><a href="#about">CATEGORIAS</a></li>
-                        <li><a href="sair_logado.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <b>SAIR</b></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <body>
+        
+        <div id="myCarousel" class="home carousel slide">
+        <div class="carousel-inner">
+		<div class="item active">
+			<div class="fill" style="background: url('/imagens/banner-viking.jpg') no-repeat top center;background-size: cover">
+			</div>
+		</div>
 
-    
-        <div id="owl-home" class="owl-carousel owl-theme">
-            
-            <div class="item"><img class="img-responsive" src="/imagens/banner-viking.jpg"></div>
-            <div class="item"><img class="img-responsive" src="/imagens/banner-thewalkingdead.jpg"></div>
-            <div class="item"><img class="img-responsive" src="/imagens/daredevil-banner.png"></div>
+		<div class="item">
+			<div class="fill" style="background: url('/imagens/banner-viking.jpg') no-repeat top center;background-size: cover" >
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="fill" style="background: url('/imagens/banner-viking.jpg') no-repeat top center;background-size: cover">
+			</div>
+		</div>
+	</div>
         </div>
         
         <div id="text-banner"><h1>SUAS SÉRIES FAVORITAS<br>EM UM SÓ LUGAR</h1>
@@ -53,13 +43,61 @@
         <button class="btn-home">CADASTRO</button>
         </div>
         
-        <section>
+        <section id="funcionalidades">
             <div class="container">
                 <h2 class="title-home">TUDO QUE VOCÊ PRECISA</h2>
+                
+                <div class="row">
+                <div class="col-md-4">
+                    <img class="img-responsive" src="/imagens/search.png">
+                    <h3>Procure suas séries</h3>
+                </div>
+                
+                <div class="col-md-4">
+                    <img class="img-responsive" src="/imagens/list.png">
+                    <h3>Filtre por gênero</h3>
+                </div>
+                
+                <div class="col-md-4">
+                    <img class="img-responsive" src="/imagens/star.png">
+                    <h3>Encontre as mais populares</h3>
+                </div>
+                </div>
+                
+                <div class="row">
+                
+                <div class="col-md-4">
+                    <img class="img-responsive" src="/imagens/monitor.png">
+                    <h3>Acesse as temporadas</h3>
+                </div>
+                
+                <div class="col-md-4">
+                    <img class="img-responsive" src="/imagens/menu.png">
+                    <h3>Veja os episódios</h3>
+                </div>
+                
+                <div class="col-md-4">
+                    <img class="img-responsive" src="/imagens/lista.png">
+                    <h3>Monte sua lista</h3>
+                </div>
+                </div>
                 
                 
             </div>
         </section>
+        
+        <section id="dois">
+            <div align="center" class="container">
+                <h2 class="title-home">NÃO PERCA TEMPO</h2>
+                
+                <button class="btn-home dois">CADASTRE-SE</button>
+                
+            </div>
+        </section>
+        
+        <footer>
+            <p>Todos os direitos reservados - 2017</p>
+        </footer>
     
     
                 
@@ -69,6 +107,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js" crossorigin="anonymous"></script>
     <!--<script type="text/javascript" src="procurar-serie.js"></script>-->
     <script>
+    $('#myCarousel').carousel({
+  interval: 6000,
+  pause: "false"
+});
         $('#owl-home').owlCarousel({
     loop:true,
     margin:10,

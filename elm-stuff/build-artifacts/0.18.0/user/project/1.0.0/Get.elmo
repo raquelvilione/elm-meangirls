@@ -4,7 +4,7 @@ var _user$project$Get$getMinhaLista = function (x) {
 		_user$project$Type$RespostaMinhaLista,
 		A2(
 			_elm_lang$http$Http$get,
-			A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io//serie/listar-todas/', x),
+			A2(_elm_lang$core$Basics_ops['++'], 'https://meangirls-raquelvilione.c9users.io/user-serie/listar-todas/', x),
 			_user$project$Decodes$decodeStock));
 };
 var _user$project$Get$getSeriesGenero = function (s) {
@@ -17,7 +17,7 @@ var _user$project$Get$getSeriesGenero = function (s) {
 				_elm_lang$core$Basics_ops['++'],
 				'https://api.themoviedb.org/3/discover/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&sort_by=popularity.desc&with_genres=',
 				A2(_elm_lang$core$Basics_ops['++'], s, '&include_null_first_air_dates=false')),
-			_user$project$Decodes$decodeSeriesGenero));
+			_user$project$Decodes$decodeStockApi));
 };
 var _user$project$Get$getGeneros = A2(
 	_elm_lang$http$Http$send,
@@ -72,5 +72,5 @@ var _user$project$Get$getStocks = function (symb) {
 				_elm_lang$core$Basics_ops['++'],
 				'https://api.themoviedb.org/3/search/tv?api_key=45167e2360d3bc4cac7f0e985b36bae5&language=pt-BR&query=',
 				_user$project$Functions$mudaString(symb)),
-			_user$project$Decodes$decodeStock));
+			_user$project$Decodes$decodeStockApi));
 };

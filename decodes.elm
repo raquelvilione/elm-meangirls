@@ -16,6 +16,16 @@ decodeStock =
                                       (field "first_air_date" string)
                                       (field "popularity" float)
                                       (field "overview" string)
+
+decodeStockApi : Decoder (List Stock)
+decodeStockApi = 
+        field "results" <| list <| map7 Stock (field "id" int)
+                                      (field "name" string)
+                                      (field "vote_average" float)
+                                      (field "poster_path" <| nullable string)
+                                      (field "first_air_date" string)
+                                      (field "popularity" float)
+                                      (field "overview" string)
                                       
 decodeRespLogin : Decoder String
 decodeRespLogin = field "resp" <| string
@@ -61,8 +71,13 @@ decodeGeneros =
       
 decodeSeriesGenero : Decoder (List SeriesGenero)
 decodeSeriesGenero = 
-        field "results" <| list <| map2 SeriesGenero (field "original_name" string)
-                                                     (field "id" int)
+        field "results" <| list <| map7 SeriesGenero (field "id" int)
+                                      (field "name" string)
+                                      (field "vote_average" float)
+                                      (field "poster_path" <| nullable string)
+                                      (field "first_air_date" string)
+                                      (field "popularity" float)
+                                      (field "overview" string)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- 
 -- ----------------------------------------------------------------------------------------------------------------------

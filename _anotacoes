@@ -1,10 +1,3 @@
 elm-make aliases.elm decodes.elm encodes.elm functions.elm get.elm portas.elm post.elm main.elm model.elm portas.elm type.elm update.elm view.elm --output=main.js      
 
 
--- ----------------------------------------------------------------------------------------------------------------------
--- MINHA LISTA
--- ----------------------------------------------------------------------------------------------------------------------
-        RespostaMinhaLista r -> 
-            case r of
-                Err x -> ({ model | mensagem = toString x}, Cmd.none)
-                Ok l -> ({model | minhalista = l, mensagem = "blz"}, Cmd.none)

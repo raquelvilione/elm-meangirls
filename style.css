@@ -15,13 +15,27 @@ a:focus, a:hover { text-decoration: none; color: #ff3c2e; }
 .social-media span { margin-right: 18px; font-size: 20px; font-family: "FontAwesome";}
 .mb60{margin-bottom:60px;}
 .mt30{margin-top:30px;}
-.input-custom {width: 100%;background: transparent;border: 1px solid #fd4c24;height: 50px;padding: 0 15px;color: #dadada;border-right:none;}
+.input-custom {background: none;
+    border: none;
+    color: #ff3c2ea6;
+    padding: 10px;
+    border-bottom: 1px solid #ff3c2ea6;
+    font-family: 'Montserrat', sans-serif;}
 input:focus, input:active {outline:0;}
-.input-custom::placeholder {color:#fd4c24;}
+.input-custom::placeholder {color:#ff3c2ea6;}
 .form-search {margin: 80px 0 60px 0;}
-.input-group-btn {border: 1px solid #fd4c24;border-left: 0;padding: 0 15px;}
+.input-group-btn {background: none;
+    border: none;
+    color: #ff3c2ea6;
+    padding: 3px;
+    border-bottom: 1px solid #ff3c2ea6;
+    font-family: 'Montserrat', sans-serif;}
 .input-group-btn button {background: transparent;border: none;}
-.fa-search {font-size:24px;color:#fd4c24;margin-top: 5px;}
+.fa-search {
+    font-size: 18px;
+    color: #ff3c2ea6;
+    margin-top: 11px;
+}
 .input-custom-register {width: 100%;background: rgb(27, 27, 27);border: none;height: 50px;padding: 0 15px;color: #dadada;margin:10px 0;}
 .input-custom-register::placeholder {color:#ecf0f1;font-family: 'Roboto', sans-serif;}   
 .btn-padrao {width: 100%;height: 50px;background: #e04421;color: #dadada;border: none;margin-top: 10px;} 
@@ -262,24 +276,29 @@ margin: 50px 0;
 .owl-prev {float:left;}
 .owl-next {float:right;}
 
-.espac {margin-bottom: 60px;}
+.espac {    margin-bottom: 0px;
+    margin-top: 122px;}
 
 #text-banner h1 {font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 50px;
     color: white;
     letter-spacing: 0;}
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;margin-top:4px;
+}    
     
 #text-banner {position: absolute;
     width: 100%;
     text-align: center;
     /* top: 55%; */
     z-index: 1;
-    margin-top: -316px;}
+    margin-top: -366px;}
     
-#owl-home img {opacity:0.5;}
+#owl-home img {opacity:0.7;}
 #owl-home .owl-stage-outer {height: 450px;}
-
+footer {background:#141414;padding:15px 0;}
+footer p {font-family:'Montserrat', sans-serif;text-align:center;margin:0;color:#fff;}
 .btn-home {
     background: #e04421;
     border: none;
@@ -301,6 +320,52 @@ margin: 50px 0;
 /*#owl-home{*/
 /*	position: relative;*/
 /*	height: 100%;}*/
+#funcionalidades img {margin: 0 auto;}
+#funcionalidades h3 {font-family: 'Montserrat', sans-serif;font-size:16px;text-align:center;margin-top:25px;}
+.title-home {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #fff;
+    font-size: 38px;
+    font-weight: bold;
+    margin: 40px 0 72px 0;
+}
+section {padding:45px 0;}
+#funcionalidades .row {margin:40px 0;}
+.btn-home.dois {
+    background: #ffffff00;
+    border: 1px solid white;
+    width: 268px;
+    padding: 10px;
+    color: #f7f6f6;
+    border-radius: 35px;
+    margin: 0 5px;
+    box-shadow: -2px 3px 25px 0px rgba(0, 0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+}
+#dois {background: #e04421;}
+.btn-home.dois:hover {background:#fff;color:#e04421;}
+.form-search {width: 245px;margin:0;float: right;margin-right: 34px;
+    margin-top: 1px;}
+.point {cursor:pointer;}
+
+.home.carousel, .home.carousel .item, .home.carousel .carousel-inner, .active {
+    height: 600px;
+}
+.fill {
+    width: 100%;
+    height: 95%;}
+
+html, body {
+    height: 95%;
+}
+
+.fill.um {background: url('/imagens/banner-thewalkingdead.jpg') no-repeat center center;background-size: cover;opacity: 0.7;}
+.fill.dois {background: url('/imagens/banner-viking.jpg') no-repeat top center;background-size: cover;opacity: 0.7;}
+.fill.tres {background: url('/imagens/dardevil-banner.jpg') no-repeat top center;background-size: cover;opacity: 0.7;}
+
 
 @media (min-width: 1200px) { 
 .container { width:970px;}
