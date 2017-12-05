@@ -40,16 +40,6 @@ update msg model =
             ({ model | view = PagMinhaLista}, getMinhaLista model.usuario.loginToken)
         MudarPagina x ->
             ({ model | view = x }, Cmd.none)
--- ---------------------------------------------------------
--- LOGIN
--- ---------------------------------------------------------
-        RespostaLogin resp ->
-            case resp of
-                Err x -> ({ model | mensagem = toString x}, Cmd.none)
-                Ok x -> ({ model | usuario = (\y -> {y | loginToken = x}) model.usuario, view = PagStock }, Cmd.none)
-                
-        Login dadoslogin ->
-            (model, Http.send RespostaLogin <| post "https://meangirls-raquelvilione.c9users.io/login/" (jsonBody (encodeDadosUsuario model.usuario.email model.usuario.senha)) decodeRespLogin)
 -- ----------------------------------------------------------------------------------------------------------------------
 -- CADASTRO USUÁRIO
 -- ----------------------------------------------------------------------------------------------------------------------
@@ -75,6 +65,16 @@ update msg model =
           
         CadastrarUsuario dadosUser ->
             (model, Http.send RespostaCadastro <| postWhole "https://meangirls-raquelvilione.c9users.io/usuario/inserir" (jsonBody (encodeUsuario dadosUser)) int)
+-- ---------------------------------------------------------
+-- LOGIN
+-- ---------------------------------------------------------
+        RespostaLogin resp ->
+            case resp of
+                Err x -> ({ model | mensagem = toString x}, Cmd.none)
+                Ok x -> ({ model | usuario = (\y -> {y | loginToken = x}) model.usuario, view = PagStock }, Cmd.none)
+                
+        Login dadoslogin ->
+            (model, Http.send RespostaLogin <| post "https://meangirls-raquelvilione.c9users.io/login/" (jsonBody (encodeDadosUsuario model.usuario.email model.usuario.senha)) decodeRespLogin)
 -- ---------------------------------------------------------
 -- PESQUISA
 -- ---------------------------------------------------------  
