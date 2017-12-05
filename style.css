@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,800,900');
 
 body { -webkit-font-smoothing: antialiased;margin-top: 50px; text-rendering: optimizeLegibility; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0px; font-size: 16px; color: #6c6c6c; font-weight: 400; line-height: 28px; background-color: #141414;}
 h1, h2, h3, h4, h5, h6 { color: #dadada; margin: 0px 0px 15px 0px; font-weight: 300; font-family: 'Oswald', sans-serif; letter-spacing: 2.5px; text-transform: uppercase; }
@@ -44,7 +45,6 @@ margin: 50px 0;
 	padding: 0 !important;
 	float:left;
 }
-
 .project-hover {
 	width: 100%;
 	height: 100%;
@@ -59,7 +59,6 @@ margin: 50px 0;
 	position: absolute;
     bottom: 0;
 }
-
 .project-hover hr {
 	height: 30px;
 	width: 0;
@@ -70,7 +69,6 @@ margin: 50px 0;
 	background-color: rgba(255, 255, 255, 1);
 	border: 0;
 }
-
 .project-hover a {
 	color: rgba(255, 255, 255, 1);
 	padding: 2px 22px;
@@ -81,14 +79,12 @@ margin: 50px 0;
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
-
 .project-hover a:hover {
 	border-color: rgba(51, 51, 51, 1);
 	color: rgba(51, 51, 51, 1);
 	background-color: #FFF;
 	
 }
-
 .project:hover .project-hover {
 	opacity: 1;
 }
@@ -97,7 +93,6 @@ margin: 50px 0;
 	width: 100%;
 	height: 5px;
 }
-
 .owl-carousel .tutor-img img {margin:0;}
 .title-item-carousel {font-size: 20px;text-transform: initial;}
 #mostra-serie {
@@ -106,7 +101,6 @@ margin: 50px 0;
     min-height: 344px;
     margin-bottom: 40px;
 }
-    
 #mostra-serie .tutor-title {float:left;font-size:40px;}
 #mostra-serie .tutor-designation {float:right;color:;#792d1d;font-size: 26px;
     color: #f1eee5;
@@ -172,18 +166,12 @@ margin: 50px 0;
 .row.temporada h1{font-family: 'Montserrat', sans-serif;margin:0;}
 .episodio {font-family: 'Montserrat', sans-serif;
     color: #dadada;}
-
 .episodio::before { 
     content: ">";
     color:red;
     font-family: 'Montserrat', sans-serif;
     margin-right: 5px;
-    
 }
-
-
-
-
 .page-scroll .btn-circle i.animated {
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 1s;
@@ -198,7 +186,6 @@ margin: 50px 0;
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
 }
-
 .page-scroll .btn-circle:hover i.animated {
   -webkit-animation-name: pulse;
   -moz-animation-name: pulse;
@@ -254,13 +241,11 @@ margin: 50px 0;
   -moz-transition: background .4s ease-in-out;
   transition: background .4s ease-in-out;
 }
-
 .btn-circle:hover, .btn-circle:focus {
   outline: 0;
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
 }
-
 .page-scroll h1 {font-family: 'Montserrat', sans-serif;color: #dadada;}
 .page-scroll {margin-bottom: 85px;}
 .row.temporada p {text-transform: uppercase;
@@ -276,9 +261,46 @@ margin: 50px 0;
 .owl-theme .owl-nav [class*='owl-']:hover {background:transparent;}
 .owl-prev {float:left;}
 .owl-next {float:right;}
+
 .espac {margin-bottom: 60px;}
 
+#text-banner h1 {font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 50px;
+    color: white;
+    letter-spacing: 0;}
+    
+#text-banner {position: absolute;
+    width: 100%;
+    text-align: center;
+    /* top: 55%; */
+    z-index: 1;
+    margin-top: -316px;}
+    
+#owl-home img {opacity:0.5;}
+#owl-home .owl-stage-outer {height: 450px;}
 
+.btn-home {
+    background: #e04421;
+    border: none;
+    width: 188px;
+    padding: 10px;
+    color: #f7f6f6;
+    border-radius: 35px;
+    margin: 0 5px;
+    box-shadow: -2px 3px 25px 0px rgba(0, 0, 0, 0.47);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom:20px;
+}
+
+/*body,*/
+/*html {*/
+/*	height: 100%;*/
+/*}*/
+
+/*#owl-home{*/
+/*	position: relative;*/
+/*	height: 100%;}*/
 
 @media (min-width: 1200px) { 
 .container { width:970px;}
