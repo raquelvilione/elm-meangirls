@@ -178,7 +178,7 @@ var _user$project$View$viewSeriesG = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tutor-block'),
+					_0: _elm_lang$html$Html_Attributes$class('tutor-block resultados'),
 					_1: {ctor: '[]'}
 				},
 				{
@@ -187,64 +187,102 @@ var _user$project$View$viewSeriesG = function (model) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tutor-block'),
+							_0: _elm_lang$html$Html_Attributes$class('tutor-img'),
 							_1: {ctor: '[]'}
 						},
 						{
 							ctor: '::',
 							_0: A2(
-								_elm_lang$html$Html$div,
+								_elm_lang$html$Html$img,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
+									_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
 									_1: {
 										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onClick(
-											_user$project$Type$VerSerie(model)),
+										_0: _elm_lang$html$Html_Attributes$src(
+											A2(
+												_elm_lang$core$Basics_ops['++'],
+												'http://image.tmdb.org/t/p/w185/',
+												_user$project$Functions$tiraAspas(
+													A2(_elm_lang$core$Maybe$withDefault, '', model.poster)))),
 										_1: {ctor: '[]'}
 									}
 								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$img,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('img-responsive'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$src(
-													A2(
-														_elm_lang$core$Basics_ops['++'],
-														'http://image.tmdb.org/t/p/w185/',
-														_user$project$Functions$tiraAspas(
-															A2(_elm_lang$core$Maybe$withDefault, '', model.poster)))),
-												_1: {ctor: '[]'}
-											}
-										},
-										{ctor: '[]'}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$h5,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													_user$project$Functions$tiraAspas(
-														_elm_lang$core$Basics$toString(model.nome))),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
+								{ctor: '[]'}),
 							_1: {ctor: '[]'}
 						}),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('tutor-content'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(
+										_user$project$Type$VerSerie(model)),
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$h5,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('tutor-title'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											_user$project$Functions$tiraAspas(
+												_elm_lang$core$Basics$toString(model.nome))),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$a,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$href('#'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$button,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('btn-ver'),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Events$onClick(
+																	_user$project$Type$VerSerie(model)),
+																_1: {ctor: '[]'}
+															}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('Visualizar'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {ctor: '[]'}
 		});
@@ -1201,7 +1239,11 @@ var _user$project$View$viewStock2 = function (model) {
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$div,
-					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('container'),
+						_1: {ctor: '[]'}
+					},
 					A2(_elm_lang$core$List$map, _user$project$View$viewStock, model.stocks)),
 				_1: {ctor: '[]'}
 			}

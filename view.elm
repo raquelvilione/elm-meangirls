@@ -206,7 +206,7 @@ viewStock2 model =
         div [class "container"] [
             h1 [class "title-tvbox"] [text "SÉRIES"]
         ]
-        , div [] (List.map viewStock model.stocks)
+        , div [class "container"] (List.map viewStock model.stocks)
     ]
 -- --------------------------------------------------------- 
 -- PESQUISA
@@ -352,15 +352,21 @@ viewGeneros (genero) =
 viewSeriesG : SeriesGenero -> Html Msg
 viewSeriesG model =
         div [class "col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30"] [ 
-            div [class "tutor-block"] [
-                div [class "tutor-block"] [
-                     div [class "tutor-content", onClick (VerSerie model)] [
-                        img [class "img-responsive", src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| Maybe.withDefault "" model.poster))] []
-                      , h5 [class "tutor-title"] [text <| tiraAspas <| toString model.nome]
+            div [class "tutor-block resultados"] [
+                div [class "tutor-img"] [
+                    img [class "img-responsive", src ("http://image.tmdb.org/t/p/w185/" ++  (tiraAspas <| Maybe.withDefault "" model.poster))] []
+                ]
+
+                , div [class "tutor-content", onClick (VerSerie model)] [
+                      h5 [class "tutor-title"] [text <| tiraAspas <| toString model.nome]
+                      , div [] [
+                        -- a [href "#"] [button [class "btn-ver dois", onClick (VerSerie stock)] [text "Ver"]]
+                        a [href "#"] [button [class "btn-ver", onClick (VerSerie model)] [text "Visualizar"]]
+                        ]
                     ]
                 ]
             ]
-        ]
+        
 
 viewSeriesGenero : Model -> Html Msg
 viewSeriesGenero model =
@@ -381,7 +387,6 @@ viewMinhaLista stock =
                         -- a [href "#"] [button [class "btn-ver dois", onClick (VerSerie stock)] [text "Ver"]]
                         a [href "#"] [button [class "btn-ver excluir"] [text "Excluir"]]
                         ]
-                    
                     -- , div [] [button [onClick (CadastrarSerie stock)] [text "+"]]
                 ]
             ]

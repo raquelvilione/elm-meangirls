@@ -16,17 +16,19 @@ import Model exposing (..)
 import Portas exposing (..)
 import Post exposing (..)
 import Type exposing (..)
-
+-- ----------------------------------------------------------------------------------------------------------------------
+-- INIT
+-- ----------------------------------------------------------------------------------------------------------------------
 init = (Model
-                (DadosUsuario "" "" "" "" "" "")
-                (Stock 0 "" 0 Nothing "" 0 "")
-                [] [] "" "" [] []
-                (SerieAtual 0 "" 0 Nothing "" 0 "")
-                (AiringToday 0 "" 0 Nothing "" 0 "")
-                [] [] [] ""
-                (Generos 0 "")
-                []
-                PagIndex, Cmd.batch [getPopulares, getAiringToday, getGeneros])
+       (DadosUsuario "" "" "" "" "" "")
+       (Stock 0 "" 0 Nothing "" 0 "")
+       [] [] "" "" [] []
+       (SerieAtual 0 "" 0 Nothing "" 0 "")
+       (AiringToday 0 "" 0 Nothing "" 0 "")
+       [] [] [] ""
+       (Generos 0 "")
+       []
+       PagIndex, Cmd.batch [getPopulares, getAiringToday, getGeneros])
 -- ----------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -- ----------------------------------------------------------------------------------------------------------------------
@@ -40,9 +42,9 @@ update msg model =
             ({ model | view = PagMinhaLista}, getMinhaLista model.usuario.loginToken)
         MudarPagina x ->
             ({ model | view = x }, Cmd.none)
--- ----------------------------------------------------------------------------------------------------------------------
+-- ---------------------------------------------------------
 -- CADASTRO USUÁRIO
--- ----------------------------------------------------------------------------------------------------------------------
+-- ---------------------------------------------------------
         Nome x ->
             ({ model | usuario = (\y -> {y | nome = x}) model.usuario}, Cmd.none)
           
@@ -125,7 +127,7 @@ update msg model =
         ResCadSerieAiringToday resposta ->
             case resposta of
                 Err x -> ({ model | mensagem = toString x}, Cmd.none)
-                Ok lista -> (model, Cmd.none)
+                Ok _ -> (model, Cmd.none)
 -- ---------------------------------------------------------
 -- SÉRIE
 -- ---------------------------------------------------------                
